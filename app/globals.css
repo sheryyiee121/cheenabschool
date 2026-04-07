@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-navy: #0a1628;
+  --color-navy-light: #132040;
+  --color-navy-medium: #1a2d5a;
+  --color-blue-primary: #1e3a8a;
+  --color-blue-accent: #2563eb;
+  --color-water-blue: #38bdf8;
+  --color-water-light: #7dd3fc;
+  --color-water-pale: #e0f2fe;
+  --color-gold: #f59e0b;
+  --color-gold-light: #fbbf24;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-playfair);
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ffffff;
+  color: #0f172a;
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+.gradient-navy {
+  background: linear-gradient(135deg, #0a1628 0%, #1e3a8a 50%, #1a2d5a 100%);
+}
+
+.gradient-water {
+  background: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%);
+}
+
+.gradient-hero {
+  background: linear-gradient(160deg, #0a1628 0%, #132040 30%, #1e3a8a 60%, #1d4ed8 100%);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #38bdf8, #7dd3fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(10, 22, 40, 0.15);
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.pattern-dots {
+  background-image: radial-gradient(circle, rgba(56, 189, 248, 0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  /* Fills transparent areas of social.png so the chip reads WhatsApp green */
+  background: #25d366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+.whatsapp-float:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 30px rgba(37, 211, 102, 0.55);
+}
