@@ -29,9 +29,9 @@ export default function Footer() {
               <Image
                 src="/images/logo.jpeg"
                 alt="Chanab Centre of Excellence"
-                width={44}
-                height={44}
-                className="rounded-lg"
+                width={56}
+                height={56}
+                className="rounded-lg size-14"
               />
               <div>
                 <p className="font-bold text-lg leading-tight">CHANAB</p>

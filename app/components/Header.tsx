@@ -35,10 +35,10 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50">
       {/* ========== TOP BAR ========== */}
-      <div className="bg-navy text-white text-xs">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-9">
+      <div className="bg-navy text-white text-[11px] sm:text-xs">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-8">
           {/* Left — contact info */}
-          <div className="hidden md:flex items-center gap-5">
+          <div className="hidden md:flex items-center gap-3 lg:gap-4">
             <a
               href="tel:03335500780"
               className="flex items-center gap-1.5 hover:text-water-blue transition-colors"
@@ -60,7 +60,7 @@ export default function Header() {
           </div>
 
           {/* Center — quick links */}
-          <div className="hidden lg:flex items-center gap-5">
+          <div className="hidden lg:flex items-center gap-4">
             {topLinks.map((link) => (
               <Link
                 key={link.name}
@@ -80,7 +80,7 @@ export default function Header() {
             </span>
             <Link
               href="/admissions"
-              className="bg-water-blue text-navy font-bold px-4 py-1 rounded text-xs hover:bg-water-light transition-colors tracking-wide uppercase"
+              className="bg-water-blue text-navy font-bold px-3 py-0.5 rounded text-[11px] hover:bg-water-light transition-colors tracking-wide uppercase"
             >
               Admissions
             </Link>
@@ -89,23 +89,23 @@ export default function Header() {
       </div>
 
       {/* ========== MAIN NAV BAR ========== */}
-      <nav className="bg-white shadow-sm border-b-[3px] border-water-blue">
+      <nav className="bg-white shadow-sm border-b-2 border-water-blue">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-12 sm:h-14">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 shrink-0">
+            <Link href="/" className="flex items-center gap-2 sm:gap-2.5 shrink-0">
               <Image
                 src="/images/logo.jpeg"
                 alt="Chanab Centre of Excellence"
-                width={52}
-                height={52}
-                className="rounded-lg"
+                width={48}
+                height={48}
+                className="rounded-md size-10 sm:size-11"
               />
               <div className="hidden sm:block">
-                <p className="font-bold text-navy text-[15px] leading-tight tracking-tight">
+                <p className="font-bold text-navy text-sm leading-tight tracking-tight">
                   CHANAB
                 </p>
-                <p className="text-[9px] text-blue-accent font-semibold tracking-[0.2em] uppercase">
+                <p className="text-[8px] text-blue-accent font-semibold tracking-[0.18em] uppercase leading-tight">
                   Centre of Excellence
                 </p>
               </div>
@@ -124,7 +124,7 @@ export default function Header() {
                 >
                   <Link
                     href={item.href}
-                    className="flex items-center gap-1 px-4 py-2 text-[13px] font-semibold text-gray-700 hover:text-blue-accent transition-colors uppercase tracking-wide"
+                    className="flex items-center gap-0.5 px-2.5 py-1.5 text-xs font-semibold text-gray-700 hover:text-blue-accent transition-colors uppercase tracking-wide"
                   >
                     {item.name}
                     {item.children && (
@@ -134,12 +134,12 @@ export default function Header() {
 
                   {/* Dropdown */}
                   {item.children && openDropdown === item.name && (
-                    <div className="absolute top-full left-0 mt-0 w-60 bg-white rounded-b-xl shadow-xl border border-gray-100 py-2 z-50">
+                    <div className="absolute top-full left-0 mt-0 w-56 bg-white rounded-b-lg shadow-xl border border-gray-100 py-1.5 z-50">
                       {item.children.map((child) => (
                         <Link
                           key={child.name}
                           href={child.href}
-                          className="block px-5 py-2.5 text-sm text-gray-600 hover:text-blue-accent hover:bg-blue-50 transition-colors"
+                          className="block px-4 py-2 text-xs text-gray-600 hover:text-blue-accent hover:bg-blue-50 transition-colors"
                         >
                           {child.name}
                         </Link>
@@ -152,14 +152,14 @@ export default function Header() {
 
             {/* Mobile Toggle */}
             <button
-              className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+              className="lg:hidden p-1.5 rounded-md hover:bg-gray-100 transition-colors"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
             >
               {mobileOpen ? (
-                <X className="w-6 h-6 text-navy" />
+                <X className="w-5 h-5 text-navy" />
               ) : (
-                <Menu className="w-6 h-6 text-navy" />
+                <Menu className="w-5 h-5 text-navy" />
               )}
             </button>
           </div>

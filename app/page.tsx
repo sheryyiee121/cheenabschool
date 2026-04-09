@@ -13,6 +13,8 @@ import {
   Heart,
   Backpack,
   ChevronRight,
+  Target,
+  Eye,
 } from "lucide-react";
 
 import SectionHeading from "@/app/components/SectionHeading";
@@ -21,6 +23,24 @@ import StaggerChildren from "@/app/components/StaggerChildren";
 import MagneticButton from "@/app/components/MagneticButton";
 import HeroTextAnimation from "@/app/components/HeroTextAnimation";
 import HeroBgSlider from "@/app/components/HeroBgSlider";
+
+const missionHighlights = [
+  "Learning beyond memorization — conceptual clarity comes first.",
+  "Health and well-being matter: our low bag weight system protects growing bodies.",
+  "A nurturing space where ethics, confidence, and curiosity grow together.",
+];
+
+const visionHighlights = [
+  "Graduates equipped for higher study, work, and civic life.",
+  "Character, integrity, and innovation woven into everyday school culture.",
+  "Aim to stand out as a centre of excellence for families in Islamabad.",
+];
+
+const campusEthos = [
+  { label: "Building minds", detail: "Rigorous academics with room to think." },
+  { label: "Shaping character", detail: "Discipline, respect, and responsibility." },
+  { label: "Inspiring faith", detail: "Values-led environment for the whole child." },
+];
 
 const whyChooseUs = [
   {
@@ -159,6 +179,149 @@ export default function HomePage() {
             </MagneticButton>
           </div>
         </HeroTextAnimation>
+      </section>
+
+      {/* ==================== MISSION & VISION ==================== */}
+      <section className="py-20 sm:py-28 relative overflow-hidden bg-linear-to-b from-water-pale/40 via-white to-gray-50">
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.35]"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.12) 0%, transparent 45%), radial-gradient(circle at 85% 10%, rgba(30, 58, 138, 0.08) 0%, transparent 40%)",
+          }}
+        />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection animation="fadeUp">
+            <SectionHeading
+              badge="Who we are"
+              title="Mission & Vision"
+              subtitle="Our purpose and the future we are building for every student at Chanab Centre of Excellence."
+            />
+          </AnimatedSection>
+
+          <div className="mt-14 grid lg:grid-cols-2 gap-6 lg:gap-8">
+            <AnimatedSection animation="fadeUp" delay={0.08}>
+              <article className="relative h-full flex flex-col rounded-3xl border border-blue-100/80 bg-white p-8 sm:p-10 shadow-[0_24px_70px_-20px_rgba(15,23,42,0.18)] card-hover overflow-hidden">
+                <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-linear-to-br from-water-blue/25 to-transparent blur-2xl" />
+                <div className="pointer-events-none absolute left-0 top-0 h-1.5 w-full bg-linear-to-r from-blue-accent via-water-blue to-water-pale" />
+                <div className="relative flex items-start gap-4">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-linear-to-br from-blue-accent to-water-blue text-white shadow-lg shadow-blue-accent/30">
+                    <Target className="h-7 w-7" strokeWidth={2} />
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-blue-accent">
+                      What we do every day
+                    </p>
+                    <h2 className="mt-1 font-heading text-2xl font-bold text-navy sm:text-[1.65rem] leading-tight">
+                      Our Mission
+                    </h2>
+                  </div>
+                </div>
+                <p className="relative mt-6 text-[15px] leading-relaxed text-gray-600">
+                  To provide a nurturing and intellectually stimulating
+                  environment where students develop conceptual understanding,
+                  ethical values, and the confidence to succeed in an
+                  ever-changing world. We are committed to making quality
+                  education accessible while prioritizing the health and
+                  happiness of every child.
+                </p>
+                <ul className="relative mt-8 space-y-3 border-t border-gray-100 pt-8">
+                  {missionHighlights.map((line) => (
+                    <li
+                      key={line}
+                      className="flex gap-3 text-sm leading-snug text-navy/90"
+                    >
+                      <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-water-blue" />
+                      <span>{line}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            </AnimatedSection>
+
+            <AnimatedSection animation="fadeUp" delay={0.14}>
+              <article className="relative h-full flex flex-col rounded-3xl border border-navy/10 bg-navy p-8 sm:p-10 text-white shadow-[0_24px_70px_-20px_rgba(10,22,40,0.45)] card-hover overflow-hidden">
+                <div className="pointer-events-none absolute -left-12 bottom-0 h-56 w-56 rounded-full bg-linear-to-tr from-water-blue/20 to-transparent blur-2xl" />
+                <div className="pointer-events-none absolute right-0 top-0 h-full w-px bg-linear-to-b from-gold-light/50 via-transparent to-transparent" />
+                <div className="relative flex items-start gap-4">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-white/15 bg-white/10 backdrop-blur-sm">
+                    <Eye className="h-7 w-7 text-gold-light" strokeWidth={2} />
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold-light/95">
+                      Where we&apos;re headed
+                    </p>
+                    <h2 className="mt-1 font-heading text-2xl font-bold text-white sm:text-[1.65rem] leading-tight">
+                      Our Vision
+                    </h2>
+                  </div>
+                </div>
+                <p className="relative mt-6 text-[15px] leading-relaxed text-white/80">
+                  To be recognized as the leading centre of educational
+                  excellence in Islamabad — a school where every graduate is
+                  equipped with knowledge, character, and the skills to
+                  contribute meaningfully to society. We envision a future
+                  where our students lead with integrity and innovation.
+                </p>
+                <ul className="relative mt-8 space-y-3 border-t border-white/10 pt-8">
+                  {visionHighlights.map((line) => (
+                    <li
+                      key={line}
+                      className="flex gap-3 text-sm leading-snug text-white/90"
+                    >
+                      <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-gold-light" />
+                      <span>{line}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            </AnimatedSection>
+          </div>
+
+          <AnimatedSection animation="fadeUp" delay={0.12} className="mt-8">
+            <div className="relative rounded-3xl border border-gray-200/90 bg-white p-8 sm:p-10 shadow-lg shadow-navy/5">
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-accent">
+                    Purpose-built campus
+                  </p>
+                  <h3 className="mt-2 font-heading text-xl font-bold text-navy sm:text-2xl">
+                    Education, discipline &amp; character — G-12 Islamabad
+                  </h3>
+                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-600 sm:text-[15px]">
+                    A learning environment designed specifically for education,
+                    discipline, and character building — spacious classrooms,
+                    separate sections where needed, mentorship, and a safe,
+                    supportive atmosphere for every learner.
+                  </p>
+                </div>
+              </div>
+              <div className="mt-8 grid gap-4 sm:grid-cols-3">
+                {campusEthos.map((item) => (
+                  <div
+                    key={item.label}
+                    className="rounded-2xl border border-gray-100 bg-linear-to-b from-blue-50/80 to-white px-5 py-4 text-center sm:text-left"
+                  >
+                    <p className="font-bold text-navy">{item.label}</p>
+                    <p className="mt-1.5 text-xs leading-relaxed text-gray-600">
+                      {item.detail}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection animation="fadeUp" delay={0.08} className="mt-10 text-center">
+            <Link
+              href="/about"
+              className="inline-flex items-center gap-2 rounded-full border border-blue-accent/20 bg-white px-5 py-2.5 text-sm font-semibold text-blue-accent shadow-sm transition-colors hover:border-blue-accent/40 hover:bg-blue-50"
+            >
+              Read more about us
+              <ChevronRight className="h-4 w-4" />
+            </Link>
+          </AnimatedSection>
+        </div>
       </section>
 
       {/* ==================== WHY CHOOSE US ==================== */}
