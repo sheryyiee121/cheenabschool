@@ -47,13 +47,6 @@ export default function Header() {
               0333-5500780
             </a>
             <a
-              href="mailto:info@chanabschool.edu.pk"
-              className="flex items-center gap-1.5 hover:text-water-blue transition-colors"
-            >
-              <Mail className="w-3 h-3" />
-              info@chanabschool.edu.pk
-            </a>
-            <a
               href="mailto:ccoe.education@gmail.com"
               className="flex items-center gap-1.5 hover:text-water-blue transition-colors"
             >

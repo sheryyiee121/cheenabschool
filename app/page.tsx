@@ -18,7 +18,6 @@ import {
 import SectionHeading from "@/app/components/SectionHeading";
 import AnimatedSection from "@/app/components/AnimatedSection";
 import StaggerChildren from "@/app/components/StaggerChildren";
-import AnimatedCounter from "@/app/components/AnimatedCounter";
 import MagneticButton from "@/app/components/MagneticButton";
 import HeroTextAnimation from "@/app/components/HeroTextAnimation";
 import HeroBgSlider from "@/app/components/HeroBgSlider";
@@ -56,9 +55,9 @@ const whyChooseUs = [
   },
   {
     icon: Award,
-    title: "Proven Results",
+    title: "FBISE-Aligned Pathway",
     description:
-      "Consistently outstanding board results with distinction holders every year.",
+      "Teaching and assessment follow FBISE expectations so students are prepared for board exams as they progress—starting strong from our first session.",
   },
 ];
 
@@ -92,30 +91,30 @@ const programs = [
 const testimonials = [
   {
     name: "Ahmed Khan",
-    role: "Parent — Grade IX Student",
+    role: "Parent — enrolling Grade IX",
     quote:
-      "The low bag weight system changed everything for my son. He's healthier, happier, and his grades have improved dramatically. Chanab truly puts students first.",
+      "The low bag weight idea was a big reason we chose Chanab. Our son won’t be carrying a heavy bag all day—we’re confident that will help his health and focus.",
     rating: 5,
   },
   {
     name: "Dr. Sadia Malik",
-    role: "Parent — Grade XI Student",
+    role: "Parent — enrolling Higher Secondary",
     quote:
-      "Conceptual teaching here is outstanding. My daughter actually understands physics and biology instead of memorizing. She's now aiming for NUST with confidence.",
+      "During our visit, teachers explained concepts instead of pushing rote work. That approach is exactly what we wanted before board classes begin.",
     rating: 5,
   },
   {
     name: "Fatima Rashid",
-    role: "Student — Grade XII Pre-Medical",
+    role: "Prospective student family",
     quote:
-      "The teachers at Chanab are more like mentors. They care about our futures and go above and beyond. I scored A+ in my boards thanks to their dedication.",
+      "We visited the campus and loved how clearly the staff explained the low-bag system and conceptual approach. We are excited to start this session at Chanab.",
     rating: 5,
   },
   {
     name: "Tariq Hussain",
-    role: "Parent — Grade VII Student",
+    role: "Parent — enrolling Grade VII",
     quote:
-      "Best school in G-12 Islamabad. The discipline, the environment, and the quality of education — everything is top-notch. My child loves going to school every day.",
+      "G-12 location works well for us. The campus felt disciplined and welcoming on our tour—we’re looking forward to our child’s first session here.",
     rating: 5,
   },
 ];
@@ -130,19 +129,24 @@ export default function HomePage() {
 
         <HeroTextAnimation className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40 w-full">
           <div className="max-w-2xl">
-            <p className="hero-badge inline-block border border-white/40 px-5 py-2 text-[13px] tracking-[0.15em] uppercase text-white/90 mb-8">
-              Welcome to Chanab Centre of Excellence
+            <p className="hero-badge inline-block border border-gold-light/70 px-5 py-2 text-[13px] tracking-[0.15em] uppercase text-gold-light mb-8 shadow-sm shadow-gold/20">
+              Welcome
             </p>
 
-            <h1 className="hero-title font-heading text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.08] tracking-tight">
-              Inspiring Excellence
+            <h1 className="hero-title font-heading text-4xl sm:text-5xl lg:text-[3.25rem] xl:text-6xl font-bold leading-[1.1] tracking-tight text-white uppercase">
+              Chanab Centre of
               <br />
-              In Education
+              <span className="text-gradient">Excellence</span>
             </h1>
 
-            <p className="hero-desc mt-6 text-lg sm:text-xl text-white/75 leading-relaxed max-w-lg italic">
-              Discover a dynamic learning environment, fostering innovation,
-              curiosity, and the pursuit of knowledge for a brighter future.
+            <p className="hero-desc mt-6 text-lg sm:text-xl text-white/75 leading-relaxed max-w-lg">
+              <span className="font-semibold text-white/90 not-italic">
+                Inspiring excellence in education.
+              </span>{" "}
+              <span className="italic">
+                Discover a dynamic learning environment, fostering innovation,
+                curiosity, and the pursuit of knowledge for a brighter future.
+              </span>
             </p>
 
             <MagneticButton className="mt-10">
@@ -155,46 +159,6 @@ export default function HomePage() {
             </MagneticButton>
           </div>
         </HeroTextAnimation>
-      </section>
-
-      {/* ==================== STATS BAR ==================== */}
-      <section className="bg-navy">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
-            {[
-              { target: 500, suffix: "+", label: "Students Enrolled" },
-              { target: 50, suffix: "+", label: "Expert Faculty" },
-              { target: 98, suffix: "%", label: "Board Results" },
-              { target: 7, suffix: "+", label: "Years of Excellence" },
-            ].map((stat) => (
-              <div key={stat.label}>
-                <AnimatedCounter
-                  target={stat.target}
-                  suffix={stat.suffix}
-                  className="text-3xl sm:text-4xl font-extrabold text-water-blue"
-                />
-                <p className="text-sm text-gray-400 mt-1">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ==================== CAMPUS IMAGE BANNER ==================== */}
-      <section className="py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection animation="fadeUp">
-            <div className="relative rounded-2xl overflow-hidden shadow-xl">
-              <Image
-                src="/images/campus-features.jpeg"
-                alt="Chanab Centre of Excellence — Purpose-Built Educational Campus"
-                width={1200}
-                height={600}
-                className="w-full h-auto object-cover"
-              />
-            </div>
-          </AnimatedSection>
-        </div>
       </section>
 
       {/* ==================== WHY CHOOSE US ==================== */}

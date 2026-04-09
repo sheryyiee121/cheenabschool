@@ -33,9 +33,9 @@ const steps = [
   {
     step: "02",
     icon: BookOpen,
-    title: "Entry Test",
+    title: "Admission Test",
     description:
-      "Students appear for a written entry test covering English, Mathematics, Urdu, and General Knowledge appropriate to their grade level.",
+      "There is one general admission test for all classes. It covers English, General Knowledge, Mathematics, and Urdu. The level of questions matches the grade you are applying for.",
   },
   {
     step: "03",
@@ -69,34 +69,11 @@ const requiredDocs = [
   "4 passport-size photographs",
 ];
 
-const syllabus = [
-  {
-    grade: "Grade VI–VIII",
-    subjects: [
-      "English (Grammar, Comprehension, Writing)",
-      "Mathematics (Arithmetic, Algebra basics, Geometry)",
-      "Urdu (Grammar, Comprehension)",
-      "General Knowledge / Science basics",
-    ],
-  },
-  {
-    grade: "Grade IX–X",
-    subjects: [
-      "English (Advanced Grammar, Essay Writing)",
-      "Mathematics (Algebra, Geometry, Trigonometry)",
-      "Science (Physics, Chemistry, Biology basics)",
-      "Urdu (Advanced Grammar, Literature)",
-    ],
-  },
-  {
-    grade: "Grade XI–XII",
-    subjects: [
-      "Subject-specific test based on chosen group",
-      "Pre-Medical: Biology, Chemistry, Physics",
-      "ICS: Mathematics, Computer Science, Physics",
-      "General: As per elective subjects",
-    ],
-  },
+const admissionTestSubjects = [
+  "English",
+  "General Knowledge",
+  "Mathematics",
+  "Urdu",
 ];
 
 const faqs = [
@@ -250,34 +227,37 @@ export default function AdmissionsPage() {
         </div>
       </section>
 
-      {/* Entry Test Syllabus */}
+      {/* Admission test */}
       <section className="py-20 sm:py-28 bg-gray-50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="fadeUp">
             <SectionHeading
-              badge="Entry Test"
-              title="Entry Test Syllabus"
-              subtitle="Prepare your child with confidence. Here's what to expect."
+              badge="Admission Test"
+              title="General Test — All Classes"
+              subtitle="Every applicant sits the same four-subject paper. Difficulty is set fairly for the grade you are applying to—not a different exam per program."
             />
           </AnimatedSection>
-          <StaggerChildren className="mt-12 grid md:grid-cols-3 gap-8" stagger={0.15}>
-            {syllabus.map((s) => (
-              <div
-                key={s.grade}
-                className="bg-white rounded-2xl p-7 border border-gray-100 card-hover"
-              >
-                <h3 className="text-lg font-bold text-navy mb-4">{s.grade}</h3>
-                <ul className="space-y-3">
-                  {s.subjects.map((sub) => (
-                    <li key={sub} className="flex items-start gap-2">
-                      <BookOpen className="w-4 h-4 text-blue-accent mt-0.5 shrink-0" />
-                      <span className="text-sm text-gray-600">{sub}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </StaggerChildren>
+          <AnimatedSection animation="fadeUp" delay={0.15}>
+            <div className="mt-12 bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
+              <p className="text-sm text-gray-600 leading-relaxed mb-6">
+                The admission test includes the following areas for{" "}
+                <strong className="text-navy">all classes</strong> (Middle,
+                Secondary, and Higher Secondary):
+              </p>
+              <ul className="space-y-3">
+                {admissionTestSubjects.map((sub) => (
+                  <li key={sub} className="flex items-start gap-3">
+                    <BookOpen className="w-5 h-5 text-blue-accent mt-0.5 shrink-0" />
+                    <span className="text-navy font-medium">{sub}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-6 text-xs text-gray-400 border-t border-gray-100 pt-6">
+                For sample topics or preparation guidance, contact the
+                admissions office on WhatsApp or phone.
+              </p>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 

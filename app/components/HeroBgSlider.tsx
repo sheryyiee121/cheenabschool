@@ -6,28 +6,16 @@ import { gsap } from "gsap";
 
 const slides = [
   {
-    src: "/images/pexels-green-odette-232224115-32227599.jpg",
-    alt: "Students engaged in learning at school",
+    src: "/images/cnob/WhatsApp%20Image%202026-04-07%20at%209.13.19%20PM.jpeg",
+    alt: "Chanab Centre of Excellence — campus and learning",
   },
   {
-    src: "/images/pexels-hson-12885696.jpg",
-    alt: "Bright classroom and academic atmosphere",
+    src: "/images/cnob/WhatsApp%20Image%202026-04-07%20at%209.13.20%20PM.jpeg",
+    alt: "Chanab Centre of Excellence — students and school life",
   },
   {
-    src: "/images/pexels-pavel-danilyuk-7942464.jpg",
-    alt: "Collaborative learning in the classroom",
-  },
-  {
-    src: "/images/pexels-pavel-danilyuk-7942486.jpg",
-    alt: "Teacher supporting student success",
-  },
-  {
-    src: "/images/pexels-pavel-danilyuk-7942511.jpg",
-    alt: "Hands-on learning and discovery",
-  },
-  {
-    src: "/images/pexels-towfiqu-barbhuiya-3440682-14658819.jpg",
-    alt: "Youth focused on education and growth",
+    src: "/images/cnob/WhatsApp%20Image%202026-04-07%20at%209.13.20%20PM%20%281%29.jpeg",
+    alt: "Chanab Centre of Excellence — educational environment",
   },
 ];
 

@@ -15,6 +15,11 @@ export const metadata: Metadata = {
     "Get in touch with Chanab Centre of Excellence. Visit us at G-12 Islamabad, call us, or send a WhatsApp message.",
 };
 
+/** Official share link (exact pin). Embed uses query + output=embed for iframe compatibility. */
+const SCHOOL_MAPS_LINK = "https://share.google/tUJK52Z6wOxVGIjih";
+const SCHOOL_MAPS_EMBED_SRC =
+  "https://www.google.com/maps?q=Chanab+Centre+of+Excellence%2C+Main+Service+Road%2C+G-12+Islamabad%2C+Pakistan&output=embed";
+
 const contactInfo = [
   {
     icon: Phone,
@@ -33,13 +38,6 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    value: "info@chanabschool.edu.pk",
-    href: "mailto:info@chanabschool.edu.pk",
-    description: "We reply within 24 hours",
-  },
-  {
-    icon: Mail,
-    title: "Gmail",
     value: "ccoe.education@gmail.com",
     href: "mailto:ccoe.education@gmail.com",
     description: "We reply within 24 hours",
@@ -48,7 +46,7 @@ const contactInfo = [
     icon: MapPin,
     title: "Location",
     value: "Main Service Road, G-12 Islamabad",
-    href: "https://maps.google.com/?q=G-12+Islamabad",
+    href: SCHOOL_MAPS_LINK,
     description: "Visit our campus",
   },
 ];
@@ -76,7 +74,7 @@ export default function ContactPage() {
       {/* Contact Cards */}
       <section className="py-20 sm:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {contactInfo.map((c) => (
               <a
                 key={c.href}
@@ -175,17 +173,30 @@ export default function ContactPage() {
 
             {/* Map + Office Hours */}
             <div className="space-y-6">
-              <div className="rounded-2xl overflow-hidden border border-gray-100 shadow-sm h-80">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3318.8!2d72.98!3d33.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDQyJzAwLjAiTiA3MsKwNTgnNDguMCJF!5e0!3m2!1sen!2spk!4v1"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Chanab Centre of Excellence Location"
-                />
+              <div className="rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
+                <div className="relative w-full aspect-[4/3] min-h-[240px] sm:min-h-[320px]">
+                  <iframe
+                    src={SCHOOL_MAPS_EMBED_SRC}
+                    width="100%"
+                    height="100%"
+                    className="absolute inset-0 h-full w-full"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Chanab Centre of Excellence — Google Maps"
+                  />
+                </div>
+                <div className="flex justify-end bg-white px-3 py-2 border-t border-gray-100">
+                  <a
+                    href={SCHOOL_MAPS_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-semibold text-blue-accent hover:text-blue-primary"
+                  >
+                    Open exact location in Google Maps →
+                  </a>
+                </div>
               </div>
               <div className="bg-white rounded-2xl p-7 border border-gray-100">
                 <div className="flex items-center gap-3 mb-4">

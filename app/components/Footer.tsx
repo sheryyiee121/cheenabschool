@@ -107,15 +107,6 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:info@chanabschool.edu.pk"
-                  className="flex items-center gap-3 text-gray-400 text-sm hover:text-white transition-colors"
-                >
-                  <Mail className="w-4 h-4 text-water-blue shrink-0" />
-                  info@chanabschool.edu.pk
-                </a>
-              </li>
-              <li>
-                <a
                   href="mailto:ccoe.education@gmail.com"
                   className="flex items-center gap-3 text-gray-400 text-sm hover:text-white transition-colors"
                 >

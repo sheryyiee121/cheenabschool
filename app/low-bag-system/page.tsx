@@ -75,8 +75,9 @@ const benefits = [
   },
   {
     icon: Star,
-    title: "Better Results",
-    description: "Comfortable students learn better. Our board results prove that health and academics go hand-in-hand.",
+    title: "Better Learning",
+    description:
+      "Comfortable students focus better in class. When children are not weighed down, well-being and academics can grow together.",
   },
 ];
 

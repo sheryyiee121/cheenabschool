@@ -46,36 +46,13 @@ const values = [
   },
 ];
 
+/** Single milestone: school narrative starts in 2026 (no prior-year timeline). */
 const timeline = [
   {
-    year: "2019",
-    title: "Founded",
-    description:
-      "Chanab Centre of Excellence was established in G-12 Islamabad with a vision to redefine school education.",
-  },
-  {
-    year: "2020",
-    title: "Low Bag System Introduced",
-    description:
-      "Pioneered the pigeon-hole storage system to eliminate heavy school bags and protect student health.",
-  },
-  {
-    year: "2022",
-    title: "FBISE Affiliation",
-    description:
-      "Achieved full affiliation with the Federal Board of Intermediate & Secondary Education.",
-  },
-  {
-    year: "2024",
-    title: "Higher Secondary Launched",
-    description:
-      "Expanded programs to include Intermediate (XI–XII) with Pre-Medical, ICS, and Pre-Engineering streams.",
-  },
-  {
     year: "2026",
-    title: "Growing Strong",
+    title: "Our journey begins",
     description:
-      "500+ students, 50+ faculty, and a reputation as one of the best schools in Islamabad.",
+      "Chanab Centre of Excellence opens in G-12 Islamabad with a clear focus: conceptual learning, a low bag weight system, student well-being, and FBISE-aligned academics for grades VI–XII—built for families enrolling from this session forward.",
   },
 ];
 
@@ -92,15 +69,16 @@ export default function AboutPage() {
                 About Us
               </span>
               <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
-                Shaping <span className="text-gradient">Futures</span> Since
-                2019
+                Shaping <span className="text-gradient">Futures</span>{" "}
+                From 2026
               </h1>
               <p className="mt-4 text-lg text-gray-300 leading-relaxed">
-                Chanab Centre of Excellence was born from a simple belief: every
+                Chanab Centre of Excellence is built on a simple belief: every
                 child deserves education that is both rigorous and caring. We
                 combine the discipline of traditional schooling with
                 innovation-driven methods to produce confident, capable
-                graduates.
+                graduates—starting fresh with our G-12 Islamabad campus this
+                academic chapter.
               </p>
             </div>
             <div className="flex justify-center">
@@ -181,9 +159,9 @@ export default function AboutPage() {
       <section className="py-20 sm:py-28">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            badge="Our Journey"
-            title="Milestones"
-            subtitle="A brief look at how Chanab has grown over the years."
+            badge="Our journey"
+            title="Starting in 2026"
+            subtitle="We’re not telling an old timeline—we’re opening our doors now and writing the story with our students and families."
           />
           <div className="mt-14 relative">
             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-blue-100" />
