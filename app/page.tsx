@@ -139,13 +139,6 @@ export default function HomePage() {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-5">
               Where Knowledge, Character &amp; Faith Unite
             </h1>
-            <p className="text-white/85 text-lg sm:text-xl leading-relaxed mb-3">
-              Building Minds • Shaping Character • Inspiring Faith
-            </p>
-            <p className="text-water-light font-medium text-base sm:text-lg mb-3">
-              Education Without Burden — Less Weight. More Learning. Greater
-              Growth.
-            </p>
             <p className="text-white/70 text-sm sm:text-base mb-8">
               Grades VI–XII | FBISE Curriculum
             </p>
