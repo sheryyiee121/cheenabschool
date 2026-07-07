@@ -143,10 +143,10 @@ export default function BestSchoolArticle() {
                 Apply Now →
               </Link>
               <Link
-                href="/programs"
+                href="/academics"
                 className="inline-flex items-center gap-2 text-blue-accent font-semibold hover:text-blue-primary transition-colors text-sm"
               >
-                Explore Programs →
+                Explore Academics →
               </Link>
             </div>
           </div>

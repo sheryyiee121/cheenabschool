@@ -1,229 +1,295 @@
+import type { Metadata } from "next";
+import Link from "next/link";
 import {
+  ArrowRight,
+  CheckCircle,
   Phone,
   Mail,
   MapPin,
   Clock,
   MessageCircle,
-  Send,
+  Globe,
 } from "lucide-react";
-import SectionHeading from "@/app/components/SectionHeading";
-import type { Metadata } from "next";
+
+import EnquiryForm from "@/app/components/EnquiryForm";
+import PageHero from "@/app/components/PageHero";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Chanab Centre of Excellence",
+  title: "Contact Us | CHANAB Centre of Excellence",
   description:
-    "Get in touch with Chanab Centre of Excellence. Visit us at G-12 Islamabad, call us, or send a WhatsApp message.",
+    "Contact CHANAB Centre of Excellence — Main Service Road, G-12, Islamabad. Phone 051-2154510, WhatsApp +92-333-5500780. Schedule a campus visit today.",
 };
 
-/** Official share link (exact pin). Embed uses query + output=embed for iframe compatibility. */
-const SCHOOL_MAPS_LINK = "https://share.google/tUJK52Z6wOxVGIjih";
-const SCHOOL_MAPS_EMBED_SRC =
-  "https://www.google.com/maps?q=Chanab+Centre+of+Excellence%2C+Main+Service+Road%2C+G-12+Islamabad%2C+Pakistan&output=embed";
+const visitReasons = [
+  "Tour our classrooms and laboratories",
+  "Meet our experienced teachers",
+  "Explore our academic programmes",
+  "Learn about our teaching methodology",
+  "Discuss your child's educational goals",
+  "Experience our safe, disciplined, and caring environment",
+];
 
-const contactInfo = [
+const whyVisit = [
+  "A welcoming and caring environment",
+  "Highly qualified and dedicated teachers",
+  "Modern classrooms and laboratories",
+  "Strong academic programmes",
+  "Separate classes for boys and girls",
+  "Islamic Tarbiyah and character development",
+  "Safe and disciplined campus",
+  "Individual attention for every student",
+  "A commitment to excellence in everything we do",
+];
+
+const contactDetails = [
+  {
+    icon: MapPin,
+    title: "Address",
+    lines: ["Main Service Road", "G-12, Islamabad"],
+    href: undefined,
+  },
   {
     icon: Phone,
-    title: "Phone",
-    value: "0333-5500780",
-    href: "tel:03335500780",
-    description: "Call us during office hours",
+    title: "Telephone",
+    lines: ["051-2154510"],
+    href: "tel:0512154510",
   },
   {
     icon: MessageCircle,
-    title: "WhatsApp",
-    value: "0333-5500780",
-    href: "https://wa.me/923335500780?text=Hello%2C%20I%20want%20to%20inquire%20about%20Chanab%20Centre%20of%20Excellence.",
-    description: "Quick response guaranteed",
+    title: "Mobile / WhatsApp",
+    lines: ["+92-333-5500780"],
+    href: "https://wa.me/923335500780",
   },
   {
     icon: Mail,
     title: "Email",
-    value: "ccoe.education@gmail.com",
+    lines: ["ccoe.education@gmail.com"],
     href: "mailto:ccoe.education@gmail.com",
-    description: "We reply within 24 hours",
   },
   {
-    icon: MapPin,
-    title: "Location",
-    value: "Main Service Road, G-12 Islamabad",
-    href: SCHOOL_MAPS_LINK,
-    description: "Visit our campus",
+    icon: Globe,
+    title: "Website",
+    lines: ["www.ccoe.edu.pk"],
+    href: "https://www.ccoe.edu.pk",
+  },
+  {
+    icon: Clock,
+    title: "Office Hours",
+    lines: ["Monday to Friday", "8:00 AM – 3:00 PM"],
+    href: undefined,
   },
 ];
 
 export default function ContactPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="gradient-hero text-white py-20 sm:py-28 relative overflow-hidden">
-        <div className="absolute inset-0 pattern-dots opacity-20" />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full text-sm text-water-light mb-6">
-            Get in Touch
-          </span>
-          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
-            Contact <span className="text-gradient">Us</span>
-          </h1>
-          <p className="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">
-            Have questions about admissions, programs, or facilities? We&apos;d
-            love to hear from you. Reach out through any channel below.
-          </p>
+      {/* Banner */}
+      <PageHero
+        eyebrow="Your Child's Future Begins Here"
+        title="Contact Us"
+        description="We'd love to welcome you to CHANAB Centre of Excellence."
+        imageSrc="/images/class.jpeg"
+        imageAlt="Students and faculty at CHANAB Centre of Excellence"
+      />
+
+      {/* Contact cards */}
+      <section className="py-16 sm:py-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-navy mb-3">
+              Get in Touch
+            </h2>
+            <p className="text-slate-500 max-w-2xl mx-auto">
+              Whether you would like to learn more about our academic
+              programmes, visit our campus, or discuss your child&apos;s
+              educational needs, our team will be delighted to assist you.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {contactDetails.map((item) => {
+              const content = (
+                <>
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-water-pale mb-4">
+                    <item.icon className="w-6 h-6 text-sky-primary" />
+                  </div>
+                  <h3 className="font-bold text-navy mb-2">{item.title}</h3>
+                  {item.lines.map((line) => (
+                    <p key={line} className="text-slate-600 text-sm">
+                      {line}
+                    </p>
+                  ))}
+                </>
+              );
+              return item.href ? (
+                <a
+                  key={item.title}
+                  href={item.href}
+                  target={item.href.startsWith("http") ? "_blank" : undefined}
+                  rel={
+                    item.href.startsWith("http")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
+                  className="block bg-white rounded-xl border border-slate-200 p-7 card-hover"
+                >
+                  {content}
+                </a>
+              ) : (
+                <div
+                  key={item.title}
+                  className="bg-white rounded-xl border border-slate-200 p-7"
+                >
+                  {content}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
-      {/* Contact Cards */}
-      <section className="py-20 sm:py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {contactInfo.map((c) => (
+      {/* Visit campus */}
+      <section className="py-16 sm:py-20 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-navy mb-4">
+                Visit Our Campus
+              </h2>
+              <p className="text-slate-600 leading-relaxed mb-6">
+                There is no better way to understand our vision than by seeing
+                it in action. During your visit, you can:
+              </p>
+              <ul className="space-y-3">
+                {visitReasons.map((reason) => (
+                  <li key={reason} className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-sky-primary mt-0.5 shrink-0" />
+                    <p className="text-slate-700">{reason}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-white rounded-xl border border-slate-200 p-8">
+              <h3 className="text-xl font-bold text-navy mb-3">
+                Why Visit CCoE?
+              </h3>
+              <p className="text-slate-500 text-sm leading-relaxed mb-5">
+                Every school has classrooms. Every school has books. What makes
+                a school truly exceptional is its people, its values, and its
+                vision. When you visit, you will experience:
+              </p>
+              <ul className="space-y-2.5">
+                {whyVisit.map((item) => (
+                  <li key={item} className="flex items-start gap-2.5">
+                    <CheckCircle className="w-4 h-4 text-sky-primary mt-0.5 shrink-0" />
+                    <p className="text-slate-600 text-sm">{item}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Enquiry form + map */}
+      <section className="py-16 sm:py-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-navy mb-3">
+                Send Us an Enquiry
+              </h2>
+              <p className="text-slate-500 mb-8">
+                Have a question? We&apos;d be delighted to hear from you.
+              </p>
+              <EnquiryForm />
+            </div>
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-navy mb-3">
+                Find Us
+              </h2>
+              <p className="text-slate-500 mb-8">
+                Main Service Road, G-12, Islamabad. Campus visits are available
+                by appointment.
+              </p>
+              <div className="w-full aspect-[4/3] border border-slate-200 overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps?q=Main+Service+Road+G-12+Islamabad&output=embed"
+                  className="w-full h-full border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="CHANAB Centre of Excellence location — G-12, Islamabad"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stay connected */}
+      <section className="py-16 sm:py-20 bg-slate-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-navy mb-4">
+            Stay Connected
+          </h2>
+          <p className="text-slate-600 leading-relaxed mb-8 max-w-2xl mx-auto">
+            Follow CHANAB Centre of Excellence on our official social media
+            platforms for admissions updates, student achievements, events, and
+            institutional news.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            {[
+              { initial: "f", label: "Facebook", href: "#" },
+              { initial: "ig", label: "Instagram", href: "#" },
+              { initial: "yt", label: "YouTube", href: "#" },
+              { initial: "in", label: "LinkedIn", href: "#" },
+            ].map((social) => (
               <a
-                key={c.href}
-                href={c.href}
-                target={c.title === "WhatsApp" || c.title === "Location" ? "_blank" : undefined}
-                rel={c.title === "WhatsApp" || c.title === "Location" ? "noopener noreferrer" : undefined}
-                className="bg-white rounded-2xl p-7 card-hover border border-gray-100 text-center group"
+                key={social.label}
+                href={social.href}
+                aria-label={social.label}
+                className="inline-flex items-center justify-center w-12 h-12 bg-navy text-white hover:bg-sky-primary transition-colors text-xs font-bold uppercase"
               >
-                <div className="w-14 h-14 rounded-full bg-blue-50 flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-accent group-hover:text-white transition-colors">
-                  <c.icon className="w-6 h-6 text-blue-accent group-hover:text-white transition-colors" />
-                </div>
-                <h3 className="font-bold text-navy">{c.title}</h3>
-                <p className="text-blue-accent font-medium text-sm mt-1">
-                  {c.value}
-                </p>
-                <p className="text-xs text-gray-400 mt-2">{c.description}</p>
+                {social.initial}
               </a>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Form + Map */}
-      <section className="py-20 sm:py-28 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-10">
-            {/* Form */}
-            <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
-              <h2 className="text-2xl font-bold text-navy mb-6">
-                Send Us a Message
-              </h2>
-              <form className="space-y-5">
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                      Full Name
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Your full name"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-accent focus:ring-2 focus:ring-blue-accent/20 outline-none transition-all text-sm"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      placeholder="03XX-XXXXXXX"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-accent focus:ring-2 focus:ring-blue-accent/20 outline-none transition-all text-sm"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    placeholder="your.email@example.com"
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-accent focus:ring-2 focus:ring-blue-accent/20 outline-none transition-all text-sm"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                    Subject
-                  </label>
-                  <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-accent focus:ring-2 focus:ring-blue-accent/20 outline-none transition-all text-sm text-gray-600">
-                    <option>General Inquiry</option>
-                    <option>Admissions</option>
-                    <option>Fee Structure</option>
-                    <option>Campus Visit</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                    Message
-                  </label>
-                  <textarea
-                    rows={4}
-                    placeholder="Write your message here..."
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-accent focus:ring-2 focus:ring-blue-accent/20 outline-none transition-all text-sm resize-none"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full inline-flex items-center justify-center gap-2 bg-blue-accent text-white font-bold px-6 py-3.5 rounded-xl hover:bg-blue-primary transition-all shadow-lg shadow-blue-accent/25"
-                >
-                  <Send className="w-4 h-4" />
-                  Send Message
-                </button>
-              </form>
-            </div>
-
-            {/* Map + Office Hours */}
-            <div className="space-y-6">
-              <div className="rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
-                <div className="relative w-full aspect-[4/3] min-h-[240px] sm:min-h-[320px]">
-                  <iframe
-                    src={SCHOOL_MAPS_EMBED_SRC}
-                    width="100%"
-                    height="100%"
-                    className="absolute inset-0 h-full w-full"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="Chanab Centre of Excellence — Google Maps"
-                  />
-                </div>
-                <div className="flex justify-end bg-white px-3 py-2 border-t border-gray-100">
-                  <a
-                    href={SCHOOL_MAPS_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs font-semibold text-blue-accent hover:text-blue-primary"
-                  >
-                    Open exact location in Google Maps →
-                  </a>
-                </div>
-              </div>
-              <div className="bg-white rounded-2xl p-7 border border-gray-100">
-                <div className="flex items-center gap-3 mb-4">
-                  <Clock className="w-6 h-6 text-blue-accent" />
-                  <h3 className="text-lg font-bold text-navy">Office Hours</h3>
-                </div>
-                <div className="space-y-3 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Monday – Friday</span>
-                    <span className="font-medium text-navy">
-                      8:00 AM – 3:00 PM
-                    </span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Saturday</span>
-                    <span className="font-medium text-navy">
-                      9:00 AM – 1:00 PM
-                    </span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Sunday</span>
-                    <span className="font-medium text-red-500">Closed</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+      {/* CTA */}
+      <section className="gradient-navy text-white py-16 sm:py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            Ready to Begin?
+          </h2>
+          <p className="text-white/75 leading-relaxed mb-2 max-w-2xl mx-auto">
+            We welcome applications for Middle School (VI–VIII), Secondary
+            School (IX–X), and Higher Secondary School (XI–XII).
+          </p>
+          <p className="text-water-blue font-medium mb-10">
+            Seats are limited — we encourage parents to apply early.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            <a
+              href="https://wa.me/923335500780"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-sky-primary text-white font-semibold px-7 py-3.5 hover:bg-blue-accent transition-colors"
+            >
+              <MessageCircle className="w-4 h-4" />
+              Message Us on WhatsApp
+            </a>
+            <Link
+              href="/admissions"
+              className="inline-flex items-center gap-2 border-2 border-white/60 text-white font-semibold px-7 py-3 hover:bg-white hover:text-navy transition-colors"
+            >
+              View Admissions
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
+          <p className="text-water-light font-medium italic">
+            Building Minds • Shaping Character • Inspiring Faith
+          </p>
         </div>
       </section>
     </>

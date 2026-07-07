@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-navy: #0a1628;
-  --color-navy-light: #132040;
+  /* Navy */
+  --color-navy: #0a2540;
+  --color-navy-light: #113563;
   --color-navy-medium: #1a2d5a;
   --color-blue-primary: #1e3a8a;
-  --color-blue-accent: #2563eb;
+  --color-blue-accent: #0284c7;
+  /* Sky blue */
+  --color-sky-primary: #0ea5e9;
   --color-water-blue: #38bdf8;
   --color-water-light: #7dd3fc;
   --color-water-pale: #e0f2fe;
-  --color-gold: #f59e0b;
-  --color-gold-light: #fbbf24;
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-playfair);
+  --font-sans: var(--font-montserrat);
+  --font-heading: var(--font-montserrat);
 }
 
 * {
@@ -27,15 +27,15 @@ body {
 }
 
 .gradient-navy {
-  background: linear-gradient(135deg, #0a1628 0%, #1e3a8a 50%, #1a2d5a 100%);
+  background: linear-gradient(135deg, #0a2540 0%, #113563 100%);
 }
 
 .gradient-water {
-  background: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%);
+  background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
 }
 
 .gradient-hero {
-  background: linear-gradient(160deg, #0a1628 0%, #132040 30%, #1e3a8a 60%, #1d4ed8 100%);
+  background: linear-gradient(160deg, #0a2540 0%, #113563 55%, #1e3a8a 100%);
 }
 
 .text-gradient {
@@ -51,35 +51,17 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
+.pattern-dots {
+  background-image: radial-gradient(circle, rgba(56, 189, 248, 0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
 .card-hover {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .card-hover:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(10, 22, 40, 0.15);
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-
-.animate-pulse-slow {
-  animation: pulse-slow 3s ease-in-out infinite;
-}
-
-@keyframes pulse-slow {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
-}
-
-.pattern-dots {
-  background-image: radial-gradient(circle, rgba(56, 189, 248, 0.15) 1px, transparent 1px);
-  background-size: 24px 24px;
+  box-shadow: 0 20px 40px rgba(10, 37, 64, 0.15);
 }
 
 .whatsapp-float {

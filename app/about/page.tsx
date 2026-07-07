@@ -1,216 +1,295 @@
-import Link from "next/link";
-import Image from "next/image";
-import {
-  Target,
-  Eye,
-  Heart,
-  Users,
-  Award,
-  BookOpen,
-  ArrowRight,
-  CheckCircle,
-} from "lucide-react";
-import SectionHeading from "@/app/components/SectionHeading";
 import type { Metadata } from "next";
+import Link from "next/link";
+import {
+  ArrowRight,
+  BookOpen,
+  Heart,
+  Landmark,
+  Rocket,
+  CheckCircle,
+  Eye,
+  Target,
+} from "lucide-react";
+
+import PageHero from "@/app/components/PageHero";
 
 export const metadata: Metadata = {
-  title: "About Us | Chanab Centre of Excellence",
+  title: "About CCoE | CHANAB Centre of Excellence",
   description:
-    "Learn about Chanab Centre of Excellence — our mission, vision, values, and commitment to quality education in Islamabad.",
+    "About CHANAB Centre of Excellence — our vision, mission, values, and learning environment. Where Knowledge, Character & Faith Unite in G-12 Islamabad.",
 };
 
-const values = [
+const featureCards = [
   {
     icon: BookOpen,
-    title: "Academic Excellence",
-    description:
-      "We pursue the highest standards of education through conceptual learning and dedicated faculty.",
+    title: "Knowledge",
+    subtitle: "Concept-Based Learning",
   },
   {
     icon: Heart,
-    title: "Student Well-being",
-    description:
-      "Every decision we make prioritizes the physical and mental health of our students.",
+    title: "Character",
+    subtitle: "Discipline & Leadership",
   },
   {
-    icon: Users,
-    title: "Community & Respect",
-    description:
-      "We foster an inclusive environment where every student, parent, and teacher is valued.",
+    icon: Landmark,
+    title: "Faith",
+    subtitle: "Tarbiyah & Akhlaq",
   },
   {
-    icon: Award,
-    title: "Innovation",
-    description:
-      "From our low bag weight system to AI courses, we embrace modern solutions in education.",
+    icon: Rocket,
+    title: "Future",
+    subtitle: "STEM, AI & Innovation",
   },
 ];
 
-/** Single milestone: school narrative starts in 2026 (no prior-year timeline). */
-const timeline = [
-  {
-    year: "2026",
-    title: "Our journey begins",
-    description:
-      "Chanab Centre of Excellence opens in G-12 Islamabad with a clear focus: conceptual learning, a low bag weight system, student well-being, and FBISE-aligned academics for grades VI–XII—built for families enrolling from this session forward.",
-  },
+const environment = [
+  "Highly qualified and dedicated teachers",
+  "Separate classes for boys and girls",
+  "Modern science and computer laboratories",
+  "Interactive classrooms",
+  "Continuous academic assessment",
+  "Leadership and personality development programmes",
+  "Sports and co-curricular activities",
+  "Strong partnership with parents",
+];
+
+const coreValues = [
+  "Excellence",
+  "Integrity",
+  "Respect",
+  "Responsibility",
+  "Discipline",
+  "Compassion",
+  "Innovation",
+  "Leadership",
+  "Service",
+];
+
+const commitments = [
+  "A quality education",
+  "A safe and supportive environment",
+  "Teachers who genuinely care",
+  "Opportunities to discover their talents",
+  "Guidance to become responsible and successful individuals",
 ];
 
 export default function AboutPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="gradient-hero text-white py-20 sm:py-28 relative overflow-hidden">
-        <div className="absolute inset-0 pattern-dots opacity-20" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-14 items-center">
-            <div>
-              <span className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full text-sm text-water-light mb-6">
-                About Us
-              </span>
-              <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
-                Shaping <span className="text-gradient">Futures</span>{" "}
-                From 2026
-              </h1>
-              <p className="mt-4 text-lg text-gray-300 leading-relaxed">
-                Chanab Centre of Excellence is built on a simple belief: every
-                child deserves education that is both rigorous and caring. We
-                combine the discipline of traditional schooling with
-                innovation-driven methods to produce confident, capable
-                graduates—starting fresh with our G-12 Islamabad campus this
-                academic chapter.
-              </p>
-            </div>
-            <div className="flex justify-center">
-              <Image
-                src="/images/logo.jpeg"
-                alt="Chanab Centre of Excellence"
-                width={300}
-                height={300}
-                className="rounded-3xl border-4 border-white/20"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Banner */}
+      <PageHero
+        eyebrow="Where Knowledge, Character & Faith Unite"
+        title="About CHANAB Centre of Excellence"
+        description="Inspiring Excellence. Shaping Character. Building the Future."
+        imageSrc="/images/president.jpeg"
+        imageAlt="Prof. Muhammad Aftab Tariq in his office at CHANAB Centre of Excellence"
+      />
 
-      {/* Mission & Vision */}
-      <section className="py-20 sm:py-28">
+      {/* Intro + feature cards */}
+      <section className="py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-2xl p-8 border border-gray-100 card-hover">
-              <div className="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center mb-6">
-                <Target className="w-7 h-7 text-blue-accent" />
-              </div>
-              <h2 className="text-2xl font-bold text-navy">Our Mission</h2>
-              <p className="mt-4 text-gray-600 leading-relaxed">
-                To provide a nurturing and intellectually stimulating environment
-                where students develop conceptual understanding, ethical values,
-                and the confidence to succeed in an ever-changing world. We are
-                committed to making quality education accessible while
-                prioritizing the health and happiness of every child.
-              </p>
-            </div>
-            <div className="bg-white rounded-2xl p-8 border border-gray-100 card-hover">
-              <div className="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center mb-6">
-                <Eye className="w-7 h-7 text-blue-accent" />
-              </div>
-              <h2 className="text-2xl font-bold text-navy">Our Vision</h2>
-              <p className="mt-4 text-gray-600 leading-relaxed">
-                To be recognized as the leading centre of educational excellence
-                in Islamabad — a school where every graduate is equipped with
-                knowledge, character, and the skills to contribute meaningfully
-                to society. We envision a future where our students lead with
-                integrity and innovation.
-              </p>
-            </div>
+          <div className="max-w-3xl mx-auto text-center mb-14">
+            <p className="text-slate-600 leading-relaxed text-lg mb-5">
+              CHANAB Centre of Excellence (CCoE) was established with a clear
+              vision — to provide an educational experience that empowers
+              students to excel academically while developing the character,
+              confidence, and values needed to lead meaningful lives.
+            </p>
+            <p className="text-slate-600 leading-relaxed">
+              We believe education is a lifelong journey of discovery, growth,
+              and service. Our purpose is to nurture young minds in an
+              environment where learning is inspiring, relationships are built
+              on respect, and every student is encouraged to realise their full
+              potential.
+            </p>
           </div>
-        </div>
-      </section>
-
-      {/* Values */}
-      <section className="py-20 sm:py-28 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            badge="Our Values"
-            title="What We Stand For"
-            subtitle="The principles that guide everything we do at Chanab."
-          />
-          <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((v) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {featureCards.map((card) => (
               <div
-                key={v.title}
-                className="bg-white rounded-2xl p-7 text-center card-hover border border-gray-100"
+                key={card.title}
+                className="bg-water-pale/60 rounded-xl p-8 text-center card-hover"
               >
-                <div className="w-14 h-14 rounded-full bg-blue-50 flex items-center justify-center mx-auto mb-5">
-                  <v.icon className="w-7 h-7 text-blue-accent" />
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white shadow-sm mb-5">
+                  <card.icon className="w-7 h-7 text-sky-primary" />
                 </div>
-                <h3 className="text-lg font-bold text-navy">{v.title}</h3>
-                <p className="mt-2 text-sm text-gray-500 leading-relaxed">
-                  {v.description}
-                </p>
+                <h3 className="text-xl font-bold text-navy mb-1">
+                  {card.title}
+                </h3>
+                <p className="text-slate-500 text-sm">{card.subtitle}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Timeline */}
-      <section className="py-20 sm:py-28">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            badge="Our journey"
-            title="Starting in 2026"
-            subtitle="We’re not telling an old timeline—we’re opening our doors now and writing the story with our students and families."
-          />
-          <div className="mt-14 relative">
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-blue-100" />
-            <div className="space-y-10">
-              {timeline.map((t) => (
-                <div key={t.year} className="relative pl-20">
-                  <div className="absolute left-4 w-8 h-8 rounded-full bg-blue-accent text-white flex items-center justify-center text-xs font-bold shadow-lg">
-                    <CheckCircle className="w-4 h-4" />
-                  </div>
-                  <div className="bg-white rounded-xl p-6 border border-gray-100 card-hover">
-                    <span className="text-xs font-bold text-water-blue bg-blue-50 px-3 py-1 rounded-full">
-                      {t.year}
-                    </span>
-                    <h3 className="text-lg font-bold text-navy mt-3">
-                      {t.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-gray-500 leading-relaxed">
-                      {t.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
+      {/* Our Story */}
+      <section className="py-16 sm:py-20 bg-water-pale/40">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-navy mb-6">
+            Our Story
+          </h2>
+          <p className="text-slate-600 leading-relaxed mb-4">
+            CCoE was founded by{" "}
+            <strong className="text-navy">Prof. Muhammad Aftab Tariq</strong>,
+            a distinguished educationist whose career spans more than 34 years
+            in teaching, educational leadership, and institutional development.
+          </p>
+          <p className="text-slate-600 leading-relaxed mb-4">
+            Drawing upon decades of experience, he envisioned a school that
+            combines strong educational standards with a nurturing culture —
+            where students are encouraged not only to achieve academic success
+            but also to grow into principled, responsible, and compassionate
+            individuals.
+          </p>
+          <p className="text-navy font-semibold text-lg">
+            That vision became CHANAB Centre of Excellence.
+          </p>
+        </div>
+      </section>
+
+      {/* Vision + Mission */}
+      <section className="py-16 sm:py-20 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="bg-white rounded-xl border border-slate-200 p-8">
+              <div className="flex items-center gap-3 mb-5">
+                <Eye className="w-7 h-7 text-sky-primary" />
+                <h2 className="text-2xl font-bold text-navy">Our Vision</h2>
+              </div>
+              <p className="text-slate-600 leading-relaxed">
+                To be a leading educational institution recognised for
+                developing confident learners, ethical leaders, and responsible
+                citizens who contribute positively to society.
+              </p>
+            </div>
+            <div className="bg-white rounded-xl border border-slate-200 p-8">
+              <div className="flex items-center gap-3 mb-5">
+                <Target className="w-7 h-7 text-sky-primary" />
+                <h2 className="text-2xl font-bold text-navy">Our Mission</h2>
+              </div>
+              <p className="text-slate-600 leading-relaxed">
+                To provide an enriching educational environment that inspires
+                intellectual curiosity, promotes lifelong learning, and nurtures
+                integrity, discipline, and compassion, enabling every student to
+                achieve excellence in education and in life.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 gradient-navy text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold">
-            Come See Us in Person
+      {/* Educational Philosophy */}
+      <section className="py-16 sm:py-20">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-navy mb-6">
+            Our Educational Philosophy
           </h2>
-          <p className="mt-3 text-gray-300">
-            Visit our campus in G-12 Islamabad and experience the Chanab
-            difference.
+          <p className="text-slate-600 leading-relaxed mb-4">
+            At CCoE, we believe every child has unique abilities and unlimited
+            potential. Our role is to inspire curiosity, encourage independent
+            thinking, strengthen self-confidence, and cultivate values that
+            guide students throughout their lives.
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-water-blue text-navy font-bold px-7 py-3 rounded-xl hover:bg-water-light transition-all"
-            >
-              Schedule a Visit <ArrowRight className="w-4 h-4" />
-            </Link>
+          <p className="text-slate-600 leading-relaxed">
+            We strive to create an atmosphere where students enjoy learning,
+            embrace challenges, and develop into thoughtful individuals who make
+            informed decisions and meaningful contributions to society.
+          </p>
+        </div>
+      </section>
+
+      {/* Learning environment */}
+      <section className="py-16 sm:py-20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold text-navy mb-3">
+              Our Learning Environment
+            </h2>
+            <p className="text-slate-500 max-w-2xl mx-auto">
+              Students learn in a safe, disciplined, and caring environment
+              where every child is encouraged to achieve their best.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4">
+            {environment.map((item) => (
+              <div key={item} className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-sky-primary mt-0.5 shrink-0" />
+                <p className="text-slate-700">{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Core values */}
+      <section className="py-16 sm:py-20 bg-slate-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-navy mb-4">
+            Our Core Values
+          </h2>
+          <p className="text-slate-500 mb-8 max-w-2xl mx-auto">
+            These values influence our teaching, our relationships, and the way
+            we prepare students for the future.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {coreValues.map((value) => (
+              <span
+                key={value}
+                className="bg-white border border-slate-200 text-navy font-medium rounded-full px-6 py-2.5 text-sm shadow-sm"
+              >
+                {value}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Commitment + CTA */}
+      <section className="gradient-navy text-white py-16 sm:py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            Our Commitment
+          </h2>
+          <p className="text-white/75 leading-relaxed mb-8 max-w-2xl mx-auto">
+            We believe that every child deserves:
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-3 text-left max-w-2xl mx-auto mb-10">
+            {commitments.map((item) => (
+              <div key={item} className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-water-blue mt-0.5 shrink-0" />
+                <p className="text-white/85">{item}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-white/70 leading-relaxed max-w-2xl mx-auto mb-6">
+            Our success is measured not only by academic achievement but also
+            by the confidence, character, and positive impact our students
+            carry into their families, communities, and the wider world.
+          </p>
+          <p className="text-white/70 leading-relaxed max-w-2xl mx-auto mb-10">
+            As we continue to grow, our commitment remains unchanged — to
+            provide an education that equips students with the knowledge,
+            values, and confidence to embrace the opportunities of tomorrow
+            while remaining grounded in integrity and purpose. At CHANAB Centre
+            of Excellence, we are shaping more than successful students —{" "}
+            <strong className="text-water-light">
+              we are shaping the future.
+            </strong>
+          </p>
+          <h3 className="text-2xl font-bold mb-4">Join the CCoE Family</h3>
+          <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/admissions"
-              className="inline-flex items-center gap-2 bg-white/10 text-white font-semibold px-7 py-3 rounded-xl hover:bg-white/20 transition-all border border-white/20"
+              className="inline-flex items-center gap-2 bg-sky-primary text-white font-semibold px-7 py-3.5 hover:bg-blue-accent transition-colors"
             >
               Apply Now
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 border-2 border-white/60 text-white font-semibold px-7 py-3 hover:bg-white hover:text-navy transition-colors"
+            >
+              Visit Our Campus
             </Link>
           </div>
         </div>

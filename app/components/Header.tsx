@@ -1,211 +1,246 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, ChevronDown, Phone, Mail, MapPin } from "lucide-react";
-
-const topLinks = [
-  { name: "Fee Structure", href: "/admissions#fees" },
-  { name: "Online Admission", href: "/admissions" },
-  { name: "Low Bag System", href: "/low-bag-system" },
-];
+import { usePathname } from "next/navigation";
+import { X, Phone, Mail, MapPin } from "lucide-react";
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  {
-    name: "Programs",
-    href: "/programs",
-    children: [
-      { name: "Middle School (VI–VIII)", href: "/programs#middle" },
-      { name: "Secondary (IX–X)", href: "/programs#secondary" },
-      { name: "Higher Secondary (XI–XII)", href: "/programs#higher" },
-    ],
-  },
-  { name: "Facilities", href: "/facilities" },
-  { name: "Blog", href: "/blog" },
-  { name: "Contact", href: "/contact" },
+  { name: "About CCoE", href: "/about" },
+  { name: "Founder's Message", href: "/founder-message" },
+  { name: "Why Choose CCoE", href: "/why-ccoe" },
+  { name: "Academics", href: "/academics" },
+  { name: "Student Life & Tarbiyah", href: "/student-life" },
+  { name: "Campus & Facilities", href: "/facilities" },
+  { name: "Admissions", href: "/admissions" },
+  { name: "News & Events", href: "/news" },
+  { name: "Contact Us", href: "/contact" },
 ];
 
 export default function Header() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Lock page scroll while the drawer is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
+  // Close the drawer on navigation
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-50">
-      {/* ========== TOP BAR ========== */}
+    <header className="sticky top-0 z-50 shadow-md">
+      {/* Utility bar */}
       <div className="bg-navy text-white text-[11px] sm:text-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-8">
-          {/* Left — contact info */}
-          <div className="hidden md:flex items-center gap-3 lg:gap-4">
+          <p className="tracking-wide">
+            <span className="text-water-blue font-semibold">
+              Admissions Open
+            </span>{" "}
+            <span className="hidden sm:inline text-white/80">
+              | Session 2026–2027 | Grades VI–XII (FBISE)
+            </span>
+          </p>
+          <div className="flex items-center gap-4">
             <a
-              href="tel:03335500780"
-              className="flex items-center gap-1.5 hover:text-water-blue transition-colors"
+              href="tel:0512154510"
+              className="hidden md:flex items-center gap-1.5 text-white/80 hover:text-water-blue transition-colors"
             >
               <Phone className="w-3 h-3" />
-              0333-5500780
+              051-2154510
             </a>
-            <a
-              href="mailto:ccoe.education@gmail.com"
-              className="flex items-center gap-1.5 hover:text-water-blue transition-colors"
-            >
-              <Mail className="w-3 h-3" />
-              ccoe.education@gmail.com
-            </a>
-            <span className="flex items-center gap-1.5 text-gray-400">
-              <MapPin className="w-3 h-3" />
-              G-12 Islamabad
-            </span>
-          </div>
-
-          {/* Center — quick links */}
-          <div className="hidden lg:flex items-center gap-4">
-            {topLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="hover:text-water-blue transition-colors"
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
-
-          {/* Right — admissions button */}
-          <div className="flex items-center gap-4 ml-auto md:ml-0">
-            <span className="md:hidden flex items-center gap-1.5 text-water-light">
-              <Phone className="w-3 h-3" />
-              0333-5500780
-            </span>
             <Link
               href="/admissions"
-              className="bg-water-blue text-navy font-bold px-3 py-0.5 rounded text-[11px] hover:bg-water-light transition-colors tracking-wide uppercase"
+              className="font-semibold hover:text-water-blue transition-colors"
             >
-              Admissions
+              Apply
+            </Link>
+            <span className="text-white/30">|</span>
+            <Link
+              href="/contact"
+              className="font-semibold hover:text-water-blue transition-colors"
+            >
+              Visit
             </Link>
           </div>
         </div>
       </div>
 
-      {/* ========== MAIN NAV BAR ========== */}
-      <nav className="bg-white shadow-sm border-b-2 border-water-blue">
+      {/* Logo bar */}
+      <div className="bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-12 sm:h-14">
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+          <div className="flex items-center justify-between h-16 sm:h-[72px]">
+            <Link href="/" className="flex items-center gap-3 shrink-0">
               <Image
                 src="/images/logo.jpeg"
-                alt="Chanab Centre of Excellence"
-                width={48}
-                height={48}
-                className="rounded-md size-10 sm:size-11"
+                alt="CHANAB Centre of Excellence"
+                width={52}
+                height={52}
+                className="rounded-md size-11 sm:size-12"
               />
-              <div className="hidden sm:block">
-                <p className="font-bold text-navy text-sm leading-tight tracking-tight">
-                  CHANAB
+              <div>
+                <p className="font-bold text-navy text-base sm:text-lg leading-tight tracking-tight">
+                  CHANAB Centre of Excellence
                 </p>
-                <p className="text-[8px] text-blue-accent font-semibold tracking-[0.18em] uppercase leading-tight">
-                  Centre of Excellence
+                <p className="hidden sm:block text-[10px] text-blue-accent font-medium tracking-[0.14em] uppercase leading-tight">
+                  Where Knowledge, Character &amp; Faith Unite
                 </p>
               </div>
             </Link>
 
-            {/* Desktop Nav Links */}
-            <div className="hidden lg:flex items-center gap-1">
-              {navigation.map((item) => (
-                <div
-                  key={item.name}
-                  className="relative"
-                  onMouseEnter={() =>
-                    item.children && setOpenDropdown(item.name)
-                  }
-                  onMouseLeave={() => setOpenDropdown(null)}
-                >
-                  <Link
-                    href={item.href}
-                    className="flex items-center gap-0.5 px-2.5 py-1.5 text-xs font-semibold text-gray-700 hover:text-blue-accent transition-colors uppercase tracking-wide"
-                  >
-                    {item.name}
-                    {item.children && (
-                      <ChevronDown className="w-3.5 h-3.5 text-gray-400" />
-                    )}
-                  </Link>
+            <div className="flex items-center gap-3 sm:gap-5">
+              <Link
+                href="/admissions"
+                className="hidden sm:inline-flex bg-sky-primary text-white font-semibold text-sm px-5 py-2.5 hover:bg-blue-accent transition-colors"
+              >
+                Apply Now
+              </Link>
 
-                  {/* Dropdown */}
-                  {item.children && openDropdown === item.name && (
-                    <div className="absolute top-full left-0 mt-0 w-56 bg-white rounded-b-lg shadow-xl border border-gray-100 py-1.5 z-50">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.name}
-                          href={child.href}
-                          className="block px-4 py-2 text-xs text-gray-600 hover:text-blue-accent hover:bg-blue-50 transition-colors"
-                        >
-                          {child.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
+              {/* Hamburger (all screen sizes) */}
+              <button
+                onClick={() => setMenuOpen(true)}
+                aria-label="Open menu"
+                className="group flex flex-col items-start justify-center gap-[5px] bg-navy hover:bg-sky-primary transition-colors p-3.5"
+              >
+                <span className="block h-[2px] w-6 bg-white transition-all group-hover:w-4" />
+                <span className="block h-[2px] w-4 bg-white transition-all group-hover:w-6" />
+                <span className="block h-[2px] w-5 bg-white" />
+              </button>
             </div>
-
-            {/* Mobile Toggle */}
-            <button
-              className="lg:hidden p-1.5 rounded-md hover:bg-gray-100 transition-colors"
-              onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label="Toggle menu"
-            >
-              {mobileOpen ? (
-                <X className="w-5 h-5 text-navy" />
-              ) : (
-                <Menu className="w-5 h-5 text-navy" />
-              )}
-            </button>
           </div>
         </div>
+      </div>
 
-        {/* ========== MOBILE MENU ========== */}
-        {mobileOpen && (
-          <div className="lg:hidden bg-white border-t border-gray-100 shadow-lg">
-            <div className="max-w-7xl mx-auto px-4 py-4 space-y-1">
-              {navigation.map((item) => (
-                <div key={item.name}>
-                  <Link
-                    href={item.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="block px-4 py-2.5 text-sm font-semibold text-gray-700 hover:text-blue-accent hover:bg-blue-50 rounded-lg transition-colors uppercase tracking-wide"
-                  >
-                    {item.name}
-                  </Link>
-                  {item.children?.map((child) => (
-                    <Link
-                      key={child.name}
-                      href={child.href}
-                      onClick={() => setMobileOpen(false)}
-                      className="block pl-9 pr-4 py-2 text-sm text-gray-500 hover:text-blue-accent hover:bg-blue-50 rounded-lg transition-colors"
-                    >
-                      {child.name}
-                    </Link>
-                  ))}
-                </div>
-              ))}
-              <div className="pt-3 border-t border-gray-100">
-                {topLinks.map((link) => (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="block px-4 py-2 text-sm text-gray-500 hover:text-blue-accent transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
+      {/* Nav strip (desktop) */}
+      <nav className="hidden lg:block bg-navy-light border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-center flex-wrap">
+            {navigation.map((item) => {
+              const active =
+                item.href === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(item.href);
+              return (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`px-2.5 py-3 text-[12px] font-medium tracking-wide transition-colors border-b-2 ${
+                    active
+                      ? "text-water-blue border-water-blue"
+                      : "text-white/90 border-transparent hover:text-water-blue hover:border-water-blue/50"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
           </div>
-        )}
+        </div>
       </nav>
+
+      {/* Overlay */}
+      <div
+        onClick={() => setMenuOpen(false)}
+        className={`fixed inset-0 bg-navy/60 backdrop-blur-[2px] transition-opacity duration-300 ${
+          menuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+      />
+
+      {/* Drawer (phone + desktop) */}
+      <aside
+        className={`fixed top-0 right-0 h-dvh w-full sm:w-[420px] bg-white shadow-2xl flex flex-col transition-transform duration-300 ease-in-out ${
+          menuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+        aria-hidden={!menuOpen}
+      >
+        {/* Drawer header */}
+        <div className="flex items-center justify-between px-6 py-5 border-b border-slate-100">
+          <div className="flex items-center gap-2.5">
+            <Image
+              src="/images/logo.jpeg"
+              alt="CHANAB Centre of Excellence"
+              width={40}
+              height={40}
+              className="rounded-md size-10"
+            />
+            <p className="font-bold text-navy text-sm leading-tight">
+              CHANAB
+              <span className="block text-[9px] text-blue-accent font-medium tracking-[0.14em] uppercase">
+                Centre of Excellence
+              </span>
+            </p>
+          </div>
+          <button
+            onClick={() => setMenuOpen(false)}
+            aria-label="Close menu"
+            className="p-2 text-navy hover:text-sky-primary transition-colors"
+          >
+            <X className="w-7 h-7" />
+          </button>
+        </div>
+
+        {/* Links */}
+        <nav className="flex-1 overflow-y-auto px-6 py-2">
+          {navigation.map((item) => {
+            const active =
+              item.href === "/"
+                ? pathname === "/"
+                : pathname.startsWith(item.href);
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                onClick={() => setMenuOpen(false)}
+                className={`flex items-center justify-between py-4 border-b border-slate-100 font-semibold transition-colors ${
+                  active
+                    ? "text-sky-primary"
+                    : "text-navy hover:text-sky-primary"
+                }`}
+              >
+                {item.name}
+              </Link>
+            );
+          })}
+
+          <Link
+            href="/admissions"
+            onClick={() => setMenuOpen(false)}
+            className="block text-center bg-sky-primary text-white font-semibold px-5 py-3.5 mt-6 mb-4 hover:bg-blue-accent transition-colors"
+          >
+            Apply Now — Session 2026–2027
+          </Link>
+        </nav>
+
+        {/* Drawer footer */}
+        <div className="px-6 py-5 border-t border-slate-100 bg-slate-50 space-y-2.5">
+          <a
+            href="tel:0512154510"
+            className="flex items-center gap-2.5 text-sm text-slate-600 hover:text-sky-primary transition-colors"
+          >
+            <Phone className="w-4 h-4 text-sky-primary" />
+            051-2154510
+          </a>
+          <a
+            href="mailto:ccoe.education@gmail.com"
+            className="flex items-center gap-2.5 text-sm text-slate-600 hover:text-sky-primary transition-colors"
+          >
+            <Mail className="w-4 h-4 text-sky-primary" />
+            ccoe.education@gmail.com
+          </a>
+          <p className="flex items-center gap-2.5 text-sm text-slate-600">
+            <MapPin className="w-4 h-4 text-sky-primary" />
+            Main Service Road, G-12, Islamabad
+          </p>
+        </div>
+      </aside>
     </header>
   );
 }

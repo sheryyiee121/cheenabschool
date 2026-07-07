@@ -1,193 +1,117 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
+  ArrowRight,
   Monitor,
   FlaskConical,
   BookOpen,
-  Shield,
-  Wifi,
   Users,
-  ArrowRight,
-  CheckCircle,
-  Cpu,
-  GraduationCap,
+  Trophy,
+  ShieldCheck,
+  School,
+  Sparkles,
 } from "lucide-react";
-import SectionHeading from "@/app/components/SectionHeading";
-import type { Metadata } from "next";
+
+import PageHero from "@/app/components/PageHero";
 
 export const metadata: Metadata = {
-  title: "Facilities | Chanab Centre of Excellence",
+  title: "Campus & Facilities | CHANAB Centre of Excellence",
   description:
-    "Explore our modern facilities — computer lab with AI courses, science lab, smart classrooms, and more at Chanab Centre of Excellence, G-12 Islamabad.",
+    "A purpose-built campus designed for learning, growth, and well-being — modern classrooms, science and computer laboratories, library, and sports facilities in G-12 Islamabad.",
 };
 
 const facilities = [
   {
-    icon: Monitor,
-    title: "Computer Lab",
-    badge: "AI & Technology",
+    icon: School,
+    title: "Modern Classrooms",
     description:
-      "State-of-the-art computer lab equipped with modern PCs and high-speed internet. Students learn programming, AI basics, web development, and digital literacy.",
-    features: [
-      "AI and Machine Learning introductory courses",
-      "Programming fundamentals (Python, Scratch)",
-      "Digital literacy and cyber safety",
-      "Typing and Office suite training",
-      "Project-based technology learning",
-    ],
+      "Spacious, well-equipped classrooms provide an engaging learning environment where students can participate actively, collaborate with confidence, and learn comfortably.",
   },
   {
     icon: FlaskConical,
-    title: "Science Laboratory",
-    badge: "Hands-on Learning",
+    title: "Science Laboratories",
     description:
-      "Fully equipped science lab for Physics, Chemistry, and Biology practicals. Students perform experiments that bring textbook concepts to life.",
-    features: [
-      "Physics experiments with modern apparatus",
-      "Chemistry practicals with safety equipment",
-      "Biology dissection and microscopy",
-      "Board exam practical preparation",
-      "Lab reports and scientific methodology training",
-    ],
+      "Our Physics, Chemistry, and Biology laboratories enable students to explore scientific concepts through observation, experimentation, and hands-on activities.",
+  },
+  {
+    icon: Monitor,
+    title: "Computer & Technology Labs",
+    description:
+      "Modern computer laboratories help students develop digital literacy, research skills, and confidence in using technology responsibly.",
   },
   {
     icon: BookOpen,
-    title: "Smart Classrooms",
-    badge: "Modern Teaching",
+    title: "Library & Reading Resources",
     description:
-      "Technology-enhanced classrooms designed for interactive learning. Clean, well-lit, and air-conditioned spaces that promote focused study.",
-    features: [
-      "Multimedia presentation systems",
-      "Comfortable seating with proper ergonomics",
-      "Climate-controlled environment",
-      "Small class sizes (max 25 students)",
-      "Pigeon-hole storage system in every classroom",
-    ],
-  },
-];
-
-const additionalFacilities = [
-  {
-    icon: Shield,
-    title: "CCTV Security",
-    description: "Complete campus coverage with 24/7 CCTV monitoring for student safety and security.",
-  },
-  {
-    icon: Wifi,
-    title: "High-Speed Internet",
-    description: "Campus-wide Wi-Fi for digital learning, research, and technology-integrated education.",
+      "Our library encourages students to develop strong reading habits, expand their knowledge, and cultivate a lifelong love of learning through a carefully selected collection of educational resources.",
   },
   {
     icon: Users,
-    title: "Student Common Area",
-    description: "Comfortable spaces for students to collaborate, discuss, and relax during breaks.",
+    title: "Interactive Learning Spaces",
+    description:
+      "Learning environments that encourage discussion, teamwork, presentations, and collaborative problem-solving, making every lesson more engaging and meaningful.",
   },
   {
-    icon: GraduationCap,
-    title: "Library & Reading Room",
-    description: "Curated collection of textbooks, reference materials, and general knowledge resources.",
+    icon: Trophy,
+    title: "Sports & Physical Development",
+    description:
+      "Students are encouraged to participate in sports and recreational activities that promote fitness, teamwork, confidence, and a healthy lifestyle.",
   },
   {
-    icon: Cpu,
-    title: "Pigeon-Hole Lockers",
-    description: "Personal storage for every student — the backbone of our Low Bag Weight System.",
+    icon: ShieldCheck,
+    title: "Safe & Secure Environment",
+    description:
+      "Student safety is our highest priority. The campus provides a secure, well-supervised, and disciplined environment where students feel respected, protected, and confident throughout the day.",
   },
   {
-    icon: BookOpen,
-    title: "Examination Hall",
-    description: "Dedicated, distraction-free examination space for mock tests and board exam preparation.",
+    icon: Sparkles,
+    title: "Comfortable Student Facilities",
+    description:
+      "Clean, well-maintained facilities support students' daily needs and contribute to a healthy, organised, and welcoming educational environment.",
   },
 ];
 
 export default function FacilitiesPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="gradient-hero text-white py-20 sm:py-28 relative overflow-hidden">
-        <div className="absolute inset-0 pattern-dots opacity-20" />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full text-sm text-water-light mb-6">
-            Our Campus
-          </span>
-          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
-            World-Class <span className="text-gradient">Facilities</span>
-          </h1>
-          <p className="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">
-            Modern infrastructure designed to support 21st-century learning.
-            Every facility is built with student comfort and academic excellence
-            in mind.
+      {/* Banner */}
+      <PageHero
+        eyebrow="A Place Where Learning Comes to Life"
+        title="Campus & Facilities"
+        description="A Purpose-Built Campus Designed for Learning, Growth, and Well-Being"
+        imageSrc="/images/class.jpeg"
+        imageAlt="CHANAB Centre of Excellence students and faculty on campus"
+      />
+
+      {/* Intro */}
+      <section className="py-14 sm:py-16">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-slate-600 leading-relaxed text-lg">
+            At CHANAB Centre of Excellence, every learning space has been
+            thoughtfully designed to provide students with a safe, comfortable,
+            and inspiring environment. Our campus supports academic excellence
+            while encouraging creativity, collaboration, and personal growth.
           </p>
         </div>
       </section>
 
-      {/* Main Facilities */}
-      <section className="py-20 sm:py-28">
+      {/* Facility cards */}
+      <section className="pb-16 sm:pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-20">
-            {facilities.map((f, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {facilities.map((facility) => (
               <div
-                key={f.title}
-                className={`grid lg:grid-cols-2 gap-12 items-center ${
-                  i % 2 === 1 ? "lg:flex-row-reverse" : ""
-                }`}
+                key={facility.title}
+                className="bg-white rounded-xl p-7 border border-slate-100 shadow-sm card-hover"
               >
-                <div className={i % 2 === 1 ? "lg:order-2" : ""}>
-                  <span className="inline-block text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full mb-4 bg-blue-50 text-blue-accent">
-                    {f.badge}
-                  </span>
-                  <h2 className="text-3xl font-bold text-navy">{f.title}</h2>
-                  <p className="mt-4 text-gray-600 leading-relaxed">
-                    {f.description}
-                  </p>
-                  <ul className="mt-6 space-y-3">
-                    {f.features.map((feat) => (
-                      <li key={feat} className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-water-blue mt-0.5 shrink-0" />
-                        <span className="text-gray-600">{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-water-pale mb-4">
+                  <facility.icon className="w-6 h-6 text-sky-primary" />
                 </div>
-                <div
-                  className={`${
-                    i % 2 === 1 ? "lg:order-1" : ""
-                  } flex justify-center`}
-                >
-                  <div className="w-full max-w-md h-72 rounded-3xl gradient-navy flex items-center justify-center">
-                    <div className="text-center text-white">
-                      <f.icon className="w-16 h-16 mx-auto mb-4 text-water-blue" />
-                      <p className="text-xl font-bold">{f.title}</p>
-                      <p className="text-sm text-gray-400 mt-1">
-                        Chanab Centre of Excellence
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Additional Facilities */}
-      <section className="py-20 sm:py-28 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            badge="More Facilities"
-            title="Everything Your Child Needs"
-            subtitle="A complete campus experience designed around student well-being and academic success."
-          />
-          <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {additionalFacilities.map((f) => (
-              <div
-                key={f.title}
-                className="bg-white rounded-2xl p-7 card-hover border border-gray-100"
-              >
-                <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mb-5">
-                  <f.icon className="w-6 h-6 text-blue-accent" />
-                </div>
-                <h3 className="text-lg font-bold text-navy">{f.title}</h3>
-                <p className="mt-2 text-sm text-gray-500 leading-relaxed">
-                  {f.description}
+                <h3 className="text-lg font-bold text-navy mb-2">
+                  {facility.title}
+                </h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  {facility.description}
                 </p>
               </div>
             ))}
@@ -195,26 +119,30 @@ export default function FacilitiesPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 gradient-navy text-white">
+      {/* Closing CTA */}
+      <section className="gradient-navy text-white py-16 sm:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold">
-            Come See Our Facilities in Person
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            A Campus That Inspires Excellence
           </h2>
-          <p className="mt-3 text-gray-300">
-            Schedule a campus tour and experience the Chanab difference
-            firsthand.
+          <p className="text-white/75 leading-relaxed mb-8 max-w-2xl mx-auto">
+            Every facility at CHANAB Centre of Excellence has been planned with
+            one purpose — to provide students with the best possible environment
+            to learn, grow, and succeed. We continue to invest in our campus to
+            ensure every student benefits from an educational experience that is
+            modern, engaging, and future-focused.
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-water-blue text-navy font-bold px-7 py-3 rounded-xl hover:bg-water-light transition-all"
+              className="inline-flex items-center gap-2 bg-sky-primary text-white font-semibold px-7 py-3.5 hover:bg-blue-accent transition-colors"
             >
-              Schedule a Tour <ArrowRight className="w-4 h-4" />
+              Book a Campus Visit
+              <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
               href="/admissions"
-              className="inline-flex items-center gap-2 bg-white/10 text-white font-semibold px-7 py-3 rounded-xl hover:bg-white/20 transition-all border border-white/20"
+              className="inline-flex items-center gap-2 border-2 border-white/60 text-white font-semibold px-7 py-3 hover:bg-white hover:text-navy transition-colors"
             >
               Apply Now
             </Link>

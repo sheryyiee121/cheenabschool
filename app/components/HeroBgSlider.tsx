@@ -4,22 +4,27 @@ import { useRef, useEffect } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 
-const slides = [
+type Slide = {
+  src: string;
+  alt: string;
+};
+
+const defaultSlides: Slide[] = [
   {
-    src: "/images/cnob/WhatsApp%20Image%202026-04-07%20at%209.13.19%20PM.jpeg",
-    alt: "Chanab Centre of Excellence — campus and learning",
+    src: "/images/class.jpeg",
+    alt: "Students at CHANAB Centre of Excellence",
   },
   {
-    src: "/images/cnob/WhatsApp%20Image%202026-04-07%20at%209.13.20%20PM.jpeg",
-    alt: "Chanab Centre of Excellence — students and school life",
-  },
-  {
-    src: "/images/cnob/WhatsApp%20Image%202026-04-07%20at%209.13.20%20PM%20%281%29.jpeg",
-    alt: "Chanab Centre of Excellence — educational environment",
+    src: "/images/president.jpeg",
+    alt: "Prof. Muhammad Aftab Tariq, Founder & Chairman of CHANAB Centre of Excellence",
   },
 ];
 
-export default function HeroBgSlider() {
+export default function HeroBgSlider({
+  slides = defaultSlides,
+}: {
+  slides?: Slide[];
+}) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -75,7 +80,7 @@ export default function HeroBgSlider() {
     });
 
     const intervalId = window.setInterval(() => {
-      goTo((activeIndex + 1) % slides.length);
+      goTo((activeIndex + 1) % slideEls.length);
     }, 5000);
 
     return () => {

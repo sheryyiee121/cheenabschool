@@ -1,325 +1,370 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  ClipboardList,
-  FileText,
-  CreditCard,
-  BookOpen,
-  HelpCircle,
   ArrowRight,
   CheckCircle,
-  ChevronDown,
+  FileText,
+  GraduationCap,
+  Award,
+  Phone,
+  Mail,
+  MapPin,
+  MessageCircle,
 } from "lucide-react";
-import SectionHeading from "@/app/components/SectionHeading";
-import AnimatedSection from "@/app/components/AnimatedSection";
-import StaggerChildren from "@/app/components/StaggerChildren";
-import MagneticButton from "@/app/components/MagneticButton";
-import HeroTextAnimation from "@/app/components/HeroTextAnimation";
-import type { Metadata } from "next";
+
+import PageHero from "@/app/components/PageHero";
 
 export const metadata: Metadata = {
-  title: "Admissions | Chanab Centre of Excellence",
+  title: "Admissions 2026–2027 | CHANAB Centre of Excellence",
   description:
-    "Apply to Chanab Centre of Excellence. Learn about admission process, fee structure, required documents, and entry test syllabus.",
+    "Admissions open for Session 2026–2027 at CHANAB Centre of Excellence — Grades VI–VIII, Matriculation, and Intermediate (FBISE). Apply today.",
 };
 
+const programmes = [
+  {
+    title: "Middle School",
+    range: "Grades VI – VIII",
+    detail:
+      "Building strong academic foundations through concept-based learning.",
+    groups: [],
+  },
+  {
+    title: "Matriculation",
+    range: "Grades IX – X",
+    detail: "Comprehensive FBISE preparation across two study groups.",
+    groups: ["Science", "Arts"],
+  },
+  {
+    title: "Higher Secondary (Intermediate)",
+    range: "Grades XI – XII",
+    detail: "Preparing students for universities and professional careers.",
+    groups: [
+      "F.Sc. Pre-Medical",
+      "F.Sc. Pre-Engineering",
+      "ICS",
+      "I.Com",
+      "Humanities",
+    ],
+  },
+];
+
 const steps = [
-  {
-    step: "01",
-    icon: ClipboardList,
-    title: "Submit Application",
-    description:
-      "Fill out the online application form or collect one from our campus. Include all required information about the student and guardian.",
-  },
-  {
-    step: "02",
-    icon: BookOpen,
-    title: "Admission Test",
-    description:
-      "There is one general admission test for all classes. It covers English, General Knowledge, Mathematics, and Urdu. The level of questions matches the grade you are applying for.",
-  },
-  {
-    step: "03",
-    icon: FileText,
-    title: "Interview & Documents",
-    description:
-      "Shortlisted candidates are called for an interview. Submit all required documents for verification and enrollment processing.",
-  },
-  {
-    step: "04",
-    icon: CreditCard,
-    title: "Fee Payment & Enrollment",
-    description:
-      "Upon acceptance, complete the fee payment and enrollment process. Welcome to the Chanab family!",
-  },
+  "Complete the Admission Application Form.",
+  "Submit the required documents.",
+  "Appear in the Admission Assessment.",
+  "Parent/Student interaction (where required).",
+  "Receive the admission decision.",
+  "Complete fee formalities and secure your seat.",
+  "Welcome to the CCoE Family!",
 ];
 
-const feeStructure = [
-  { level: "Middle School (VI–VIII)" },
-  { level: "Secondary (IX–X)" },
-  { level: "Higher Secondary (XI–XII)" },
-];
-
-const requiredDocs = [
-  "Completed admission form with recent photographs",
-  "Birth certificate (original + photocopy)",
-  "Previous school leaving certificate",
-  "Last 2 years report cards / result cards",
-  "Parent/Guardian CNIC (photocopy)",
-  "Character certificate from previous school",
-  "4 passport-size photographs",
-];
-
-const admissionTestSubjects = [
+const testSubjects = [
   "English",
-  "General Knowledge",
   "Mathematics",
   "Urdu",
+  "General Science / General Knowledge",
+  "Analytical & Reasoning Skills",
 ];
 
-const faqs = [
-  {
-    q: "When do admissions open?",
-    a: "Admissions typically open in January for the new academic session starting in April. However, mid-session admissions are also considered subject to seat availability.",
-  },
-  {
-    q: "Is there an age requirement?",
-    a: "Students must meet the FBISE minimum age requirements for each grade level. Generally, a student should be at least 10 years old for Grade VI entry.",
-  },
-  {
-    q: "Can my child transfer mid-year?",
-    a: "Yes, we accept mid-year transfers subject to seat availability and a successful entry evaluation. Transfer certificates from the previous school are mandatory.",
-  },
-  {
-    q: "Do you offer scholarships?",
-    a: "Yes! We offer merit-based scholarships for outstanding performers and need-based financial aid for deserving students. Contact our admissions office for details.",
-  },
-  {
-    q: "What is the medium of instruction?",
-    a: "Our primary medium of instruction is English, with Urdu taught as a compulsory subject as per FBISE requirements.",
-  },
-  {
-    q: "Is transport available?",
-    a: "Currently, families arrange their own transport. However, our central G-12 location is easily accessible from all sectors of Islamabad.",
-  },
+const documents = [
+  "Completed Admission Form",
+  "Passport-size photographs",
+  "Student's Form-B / Smart Card",
+  "Parent or Guardian's CNIC",
+  "Previous School Result Card",
+  "School Leaving Certificate (where applicable)",
+  "Character Certificate (where applicable)",
+];
+
+const scholarships = [
+  "Merit Scholarships",
+  "Performance-Based Scholarships",
+  "Need-Based Assistance",
+  "Sibling Fee Concession",
+  "Special Cases (subject to approval)",
+];
+
+const whyChoose = [
+  "Academic Excellence",
+  "Concept-Based Learning",
+  "Strong Islamic Tarbiyah",
+  "Separate Classes for Boys & Girls",
+  "Highly Qualified Teachers",
+  "Individual Student Mentoring",
+  "Safe & Disciplined Campus",
+  "STEM & Future Skills",
+  "Leadership Development",
+  "Sports & Co-Curricular Activities",
 ];
 
 export default function AdmissionsPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="gradient-hero text-white py-20 sm:py-28 relative overflow-hidden">
-        <div className="absolute inset-0 pattern-dots opacity-20" />
-        <HeroTextAnimation className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="hero-badge inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full text-sm text-water-light mb-6">
-            Admissions Open 2026–27
-          </span>
-          <h1 className="hero-title text-4xl sm:text-5xl font-extrabold tracking-tight">
-            Join the <span className="text-gradient">Chanab Family</span>
-          </h1>
-          <p className="hero-desc mt-4 text-lg text-gray-300 max-w-2xl mx-auto">
-            Begin your child&apos;s journey towards academic excellence. Our
-            simple admission process ensures a smooth start.
+      {/* Banner */}
+      <PageHero
+        eyebrow="Session 2026–2027"
+        title="Admissions Open"
+        description="Begin Your Child's Journey Towards Excellence"
+        imageSrc="/images/class.jpeg"
+        imageAlt="Students and faculty at CHANAB Centre of Excellence"
+      />
+
+      {/* Intro */}
+      <section className="py-14 sm:py-16">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-slate-600 leading-relaxed text-lg">
+            Thank you for considering CHANAB Centre of Excellence for your
+            child&apos;s education. We are committed to providing a nurturing
+            environment where students achieve academic excellence, develop
+            strong character, and grow with confidence and faith. We warmly
+            welcome families who share our vision of quality education and
+            holistic development.
           </p>
-          <div className="hero-cta mt-8">
-            <MagneticButton>
-              <a
-                href="https://wa.me/923335500780?text=Hello%2C%20I%20want%20to%20inquire%20about%20admissions."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-water-blue text-navy font-bold px-7 py-3.5 rounded-xl hover:bg-water-light transition-all shadow-lg"
-              >
-                Inquire on WhatsApp <ArrowRight className="w-4 h-4" />
-              </a>
-            </MagneticButton>
-          </div>
-        </HeroTextAnimation>
+        </div>
       </section>
 
-      {/* Admission Process */}
-      <section className="py-20 sm:py-28">
+      {/* Programmes */}
+      <section className="pb-16 sm:pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection animation="fadeUp">
-            <SectionHeading
-              badge="How to Apply"
-              title="Admission Process"
-              subtitle="Four simple steps to enroll your child at Chanab Centre of Excellence."
-            />
-          </AnimatedSection>
-          <StaggerChildren className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-8" stagger={0.15}>
-            {steps.map((s, i) => (
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-navy mb-3">
+              Programmes Offered
+            </h2>
+            <p className="text-slate-500">
+              All programmes follow the Federal Board (FBISE) curriculum.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {programmes.map((prog) => (
               <div
-                key={s.step}
-                className="relative bg-white rounded-2xl p-7 card-hover border border-gray-100"
+                key={prog.title}
+                className="bg-white rounded-xl border border-slate-200 p-8 card-hover flex flex-col"
               >
-                <div className="absolute -top-4 -left-2 w-10 h-10 rounded-full gradient-water flex items-center justify-center text-white font-bold text-sm shadow-lg">
-                  {s.step}
-                </div>
-                <s.icon className="w-8 h-8 text-blue-accent mt-4 mb-4" />
-                <h3 className="text-lg font-bold text-navy">{s.title}</h3>
-                <p className="mt-2 text-sm text-gray-500 leading-relaxed">
-                  {s.description}
+                <GraduationCap className="w-8 h-8 text-sky-primary mb-4" />
+                <p className="text-sky-primary font-semibold text-sm tracking-wide uppercase mb-1">
+                  {prog.range}
                 </p>
-                {i < steps.length - 1 && (
-                  <ArrowRight className="hidden lg:block absolute -right-5 top-1/2 -translate-y-1/2 w-5 h-5 text-water-blue" />
+                <h3 className="text-xl font-bold text-navy mb-3">
+                  {prog.title}
+                </h3>
+                <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                  {prog.detail}
+                </p>
+                {prog.groups.length > 0 && (
+                  <div className="mt-auto flex flex-wrap gap-2">
+                    {prog.groups.map((group) => (
+                      <span
+                        key={group}
+                        className="bg-water-pale text-blue-accent text-xs font-semibold rounded-full px-3 py-1"
+                      >
+                        {group}
+                      </span>
+                    ))}
+                  </div>
                 )}
               </div>
             ))}
-          </StaggerChildren>
+          </div>
         </div>
       </section>
 
-      {/* Fee Structure */}
-      <section className="py-20 sm:py-28 bg-gray-50">
+      {/* Admission process */}
+      <section className="py-16 sm:py-20 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection animation="fadeUp">
-            <SectionHeading
-              badge="Fee Structure"
-              title="Transparent & Affordable"
-              subtitle="Quality education with clear policies. Contact admissions for current fee details."
-            />
-          </AnimatedSection>
-          <AnimatedSection animation="scale" delay={0.2}>
-            <div className="mt-12 bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
-              <div className="bg-navy text-white text-sm font-semibold px-6 py-4">
-                Program Level
-              </div>
-              {feeStructure.map((f, i) => (
-                <div
-                  key={f.level}
-                  className={`px-6 py-4 text-sm font-medium text-navy ${
-                    i % 2 === 0 ? "bg-white" : "bg-gray-50"
-                  }`}
-                >
-                  {f.level}
-                </div>
-              ))}
-            </div>
-            <p className="mt-4 text-xs text-gray-400 text-center">
-              Admission and monthly fees are available from the admissions
-              office. Rates are subject to revision.
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-navy mb-3">
+              Admission Process
+            </h2>
+            <p className="text-slate-500">
+              Admission at CCoE is simple and transparent.
             </p>
-          </AnimatedSection>
+          </div>
+          <ol className="space-y-4">
+            {steps.map((step, index) => (
+              <li
+                key={step}
+                className="flex items-start gap-4 bg-white rounded-xl border border-slate-200 p-5"
+              >
+                <span className="flex items-center justify-center w-9 h-9 rounded-full bg-sky-primary text-white font-bold text-sm shrink-0">
+                  {index + 1}
+                </span>
+                <p className="text-slate-700 pt-1.5">{step}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
-      {/* Required Documents */}
-      <section className="py-20 sm:py-28">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection animation="fadeUp">
-            <SectionHeading
-              badge="Documents"
-              title="Required Documents"
-              subtitle="Please prepare the following documents before visiting our admissions office."
-            />
-          </AnimatedSection>
-          <AnimatedSection animation="fadeUp" delay={0.15}>
-            <div className="mt-12 bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
-              <StaggerChildren className="space-y-4" stagger={0.08} y={20}>
-                {requiredDocs.map((doc) => (
-                  <div key={doc} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-water-blue mt-0.5 shrink-0" />
-                    <span className="text-gray-700">{doc}</span>
-                  </div>
-                ))}
-              </StaggerChildren>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Admission test */}
-      <section className="py-20 sm:py-28 bg-gray-50">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection animation="fadeUp">
-            <SectionHeading
-              badge="Admission Test"
-              title="General Test — All Classes"
-              subtitle="Every applicant sits the same four-subject paper. Difficulty is set fairly for the grade you are applying to—not a different exam per program."
-            />
-          </AnimatedSection>
-          <AnimatedSection animation="fadeUp" delay={0.15}>
-            <div className="mt-12 bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
-              <p className="text-sm text-gray-600 leading-relaxed mb-6">
-                The admission test includes the following areas for{" "}
-                <strong className="text-navy">all classes</strong> (Middle,
-                Secondary, and Higher Secondary):
+      {/* Test + documents */}
+      <section className="py-16 sm:py-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="rounded-xl border border-slate-200 p-8">
+              <h3 className="text-2xl font-bold text-navy mb-3">
+                Admission Assessment
+              </h3>
+              <p className="text-slate-600 text-sm leading-relaxed mb-5">
+                The admission assessment helps us understand each
+                student&apos;s academic readiness and place them in the
+                appropriate class. The assessment may include:
               </p>
-              <ul className="space-y-3">
-                {admissionTestSubjects.map((sub) => (
-                  <li key={sub} className="flex items-start gap-3">
-                    <BookOpen className="w-5 h-5 text-blue-accent mt-0.5 shrink-0" />
-                    <span className="text-navy font-medium">{sub}</span>
+              <ul className="space-y-2.5">
+                {testSubjects.map((subject) => (
+                  <li key={subject} className="flex items-start gap-2.5">
+                    <CheckCircle className="w-4 h-4 text-sky-primary mt-0.5 shrink-0" />
+                    <p className="text-slate-700 text-sm">{subject}</p>
                   </li>
                 ))}
               </ul>
-              <p className="mt-6 text-xs text-gray-400 border-t border-gray-100 pt-6">
-                For sample topics or preparation guidance, contact the
-                admissions office on WhatsApp or phone.
+            </div>
+            <div className="rounded-xl border border-slate-200 p-8">
+              <div className="flex items-center gap-3 mb-3">
+                <FileText className="w-6 h-6 text-sky-primary" />
+                <h3 className="text-2xl font-bold text-navy">
+                  Required Documents
+                </h3>
+              </div>
+              <ul className="space-y-2.5 mb-4">
+                {documents.map((doc) => (
+                  <li key={doc} className="flex items-start gap-2.5">
+                    <CheckCircle className="w-4 h-4 text-sky-primary mt-0.5 shrink-0" />
+                    <p className="text-slate-700 text-sm">{doc}</p>
+                  </li>
+                ))}
+              </ul>
+              <p className="text-slate-500 text-xs">
+                Original documents may be required for verification at the time
+                of admission.
               </p>
             </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* FAQs */}
-      <section className="py-20 sm:py-28">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection animation="fadeUp">
-            <SectionHeading
-              badge="FAQs"
-              title="Frequently Asked Questions"
-              subtitle="Have questions? We have answers."
-            />
-          </AnimatedSection>
-          <StaggerChildren className="mt-12 space-y-4" stagger={0.1} y={30}>
-            {faqs.map((faq) => (
-              <details
-                key={faq.q}
-                className="group bg-white rounded-xl border border-gray-100 overflow-hidden"
-              >
-                <summary className="flex items-center justify-between cursor-pointer px-6 py-4 text-navy font-semibold hover:bg-gray-50 transition-colors list-none">
-                  <span className="flex items-center gap-3">
-                    <HelpCircle className="w-5 h-5 text-blue-accent shrink-0" />
-                    {faq.q}
-                  </span>
-                  <ChevronDown className="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform" />
-                </summary>
-                <div className="px-6 pb-5 text-sm text-gray-600 leading-relaxed">
-                  {faq.a}
-                </div>
-              </details>
-            ))}
-          </StaggerChildren>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-16 gradient-navy text-white">
-        <AnimatedSection animation="fadeUp" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold">Ready to Enroll?</h2>
-          <p className="mt-3 text-gray-300">
-            Contact our admissions team today or visit our campus in G-12
-            Islamabad.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <MagneticButton>
-              <a
-                href="tel:03335500780"
-                className="inline-flex items-center gap-2 bg-water-blue text-navy font-bold px-7 py-3 rounded-xl hover:bg-water-light transition-all"
-              >
-                Call Now: 0333-5500780
-              </a>
-            </MagneticButton>
-            <MagneticButton>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 bg-white/10 text-white font-semibold px-7 py-3 rounded-xl hover:bg-white/20 transition-all border border-white/20"
-              >
-                Visit Campus
-              </Link>
-            </MagneticButton>
           </div>
-        </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Scholarships */}
+      <section className="py-16 sm:py-20 bg-water-pale/50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <Award className="w-10 h-10 text-sky-primary mx-auto mb-5" />
+          <h2 className="text-3xl sm:text-4xl font-bold text-navy mb-4">
+            Scholarships &amp; Fee Concessions
+          </h2>
+          <p className="text-slate-600 leading-relaxed mb-8 max-w-2xl mx-auto">
+            We believe that talented and deserving students should have access
+            to quality education. Subject to institutional policy, the College
+            offers:
+          </p>
+          <div className="flex flex-wrap justify-center gap-3 mb-6">
+            {scholarships.map((item) => (
+              <span
+                key={item}
+                className="bg-white border border-slate-200 text-navy font-medium rounded-full px-5 py-2 text-sm shadow-sm"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+          <p className="text-slate-500 text-sm">
+            Scholarships are awarded on merit and according to institutional
+            regulations.
+          </p>
+        </div>
+      </section>
+
+      {/* Why choose */}
+      <section className="py-16 sm:py-20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold text-navy">
+              Why Choose CCoE?
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4">
+            {whyChoose.map((point) => (
+              <div key={point} className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-sky-primary mt-0.5 shrink-0" />
+                <p className="text-slate-700">{point}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Important information */}
+      <section className="pb-16 sm:pb-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-slate-50 rounded-xl border border-slate-200 p-8">
+            <h3 className="text-xl font-bold text-navy mb-4">
+              Important Information
+            </h3>
+            <ul className="space-y-2.5">
+              {[
+                "Admissions are offered subject to seat availability.",
+                "Limited class sizes ensure personalised attention.",
+                "Early applications are encouraged.",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2.5">
+                  <CheckCircle className="w-4 h-4 text-sky-primary mt-0.5 shrink-0" />
+                  <p className="text-slate-700 text-sm">{item}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Apply CTA */}
+      <section className="gradient-navy text-white py-16 sm:py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            Begin Your Child&apos;s Future Today
+          </h2>
+          <p className="text-white/75 leading-relaxed mb-2 max-w-2xl mx-auto">
+            Applications are accepted subject to seat availability. As seats are
+            limited, parents are encouraged to complete the admission process at
+            the earliest opportunity.
+          </p>
+          <p className="text-water-blue font-medium mb-10">
+            Admissions Open: Session 2026–2027
+          </p>
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            <a
+              href="https://wa.me/923335500780"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-sky-primary text-white font-semibold px-7 py-3.5 hover:bg-blue-accent transition-colors"
+            >
+              <MessageCircle className="w-4 h-4" />
+              Apply via WhatsApp
+            </a>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 border-2 border-white/60 text-white font-semibold px-7 py-3 hover:bg-white hover:text-navy transition-colors"
+            >
+              Visit Our Campus
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-white/80">
+            <span className="inline-flex items-center gap-2">
+              <MapPin className="w-4 h-4 text-water-blue" />
+              Main Service Road, G-12, Islamabad
+            </span>
+            <a
+              href="tel:0512154510"
+              className="inline-flex items-center gap-2 hover:text-water-blue transition-colors"
+            >
+              <Phone className="w-4 h-4 text-water-blue" />
+              051-2154510
+            </a>
+            <a
+              href="mailto:ccoe.education@gmail.com"
+              className="inline-flex items-center gap-2 hover:text-water-blue transition-colors"
+            >
+              <Mail className="w-4 h-4 text-water-blue" />
+              ccoe.education@gmail.com
+            </a>
+          </div>
+        </div>
       </section>
     </>
   );
