@@ -186,10 +186,16 @@ export default function HomePage() {
                   Prof. Muhammad Aftab Tariq
                 </strong>{" "}
                 founded CHANAB Centre of Excellence after more than 34 years of
-                teaching and educational leadership in Islamabad — serving as
-                Mathematics Lecturer, Associate Professor, Principal, Area
-                Education Officer, and Director (Colleges), and playing a key
-                role in establishing six Model Colleges.
+                distinguished service in teaching and educational leadership in
+                Islamabad. He served as a Mathematics Lecturer, Associate
+                Professor, Principal, Area Education Officer, and Director
+                (Colleges), played a pivotal role in establishing six Model
+                Colleges, and founded two Centres of Excellence in Islamabad
+                Model Colleges — one for girls and one for boys. Inspired by a
+                lifelong commitment to education, he established CHANAB Centre
+                of Excellence to provide an institution where knowledge,
+                character, and faith unite, preparing students for academic
+                excellence and responsible leadership.
               </p>
               <p className="text-slate-600 leading-relaxed mb-6 italic">
                 &ldquo;Mathematics is the language of logic. If you can teach a

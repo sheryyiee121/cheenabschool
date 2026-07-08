@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { X, Phone, Mail, MapPin } from "lucide-react";
+import { ChevronDown, X, Phone, Mail, MapPin } from "lucide-react";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -17,6 +17,52 @@ const navigation = [
   { name: "Admissions", href: "/admissions" },
   { name: "News & Events", href: "/news" },
   { name: "Contact Us", href: "/contact" },
+];
+
+const downloadLinks = [
+  {
+    name: "Fee Structure",
+    href: "/downloads/fee-structure.pdf",
+    fileName: "CCoE-Fee-Structure.pdf",
+  },
+  {
+    name: "Registration Form",
+    href: "/downloads/registration-form.pdf",
+    fileName: "CCoE-Registration-Form.pdf",
+  },
+];
+
+const desktopNavigation = [
+  { name: "Home", href: "/" },
+  {
+    name: "About",
+    href: "/about",
+    children: [
+      { name: "About CCoE", href: "/about" },
+      { name: "Founder's Message", href: "/founder-message" },
+      { name: "Why Choose CCoE", href: "/why-ccoe" },
+    ],
+  },
+  {
+    name: "Academics",
+    href: "/academics",
+    children: [
+      { name: "Academics", href: "/academics" },
+      { name: "Student Life & Tarbiyah", href: "/student-life" },
+      { name: "Campus & Facilities", href: "/facilities" },
+      { name: "Education Without Burden", href: "/low-bag-system" },
+    ],
+  },
+  {
+    name: "Admissions",
+    href: "/admissions",
+    children: [
+      { name: "Admissions", href: "/admissions" },
+      ...downloadLinks,
+    ],
+  },
+  { name: "News & Events", href: "/news" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export default function Header() {
@@ -122,17 +168,66 @@ export default function Header() {
       {/* Nav strip (desktop) */}
       <nav className="hidden lg:block bg-navy-light border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-center flex-wrap">
-            {navigation.map((item) => {
+          <div className="flex items-center justify-center gap-1">
+            {desktopNavigation.map((item) => {
+              const children = "children" in item ? item.children : undefined;
               const active =
                 item.href === "/"
                   ? pathname === "/"
-                  : pathname.startsWith(item.href);
+                  : pathname.startsWith(item.href) ||
+                    Boolean(
+                      children?.some((child) =>
+                        child.href.startsWith("/downloads")
+                          ? false
+                          : pathname.startsWith(child.href)
+                      )
+                    );
+
+              if (children) {
+                return (
+                  <div key={item.name} className="group relative">
+                    <Link
+                      href={item.href}
+                      className={`flex items-center gap-1 px-5 py-3 text-[13px] font-semibold tracking-wide transition-colors border-b-2 ${
+                        active
+                          ? "text-water-blue border-water-blue"
+                          : "text-white/90 border-transparent hover:text-water-blue hover:border-water-blue/50"
+                      }`}
+                    >
+                      {item.name}
+                      <ChevronDown className="w-3.5 h-3.5 transition-transform group-hover:rotate-180" />
+                    </Link>
+                    <div className="invisible absolute left-1/2 top-full z-50 w-64 -translate-x-1/2 translate-y-2 bg-white py-2 shadow-xl opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                      {children.map((child) =>
+                        "fileName" in child ? (
+                          <a
+                            key={child.name}
+                            href={child.href}
+                            download={child.fileName}
+                            className="block px-4 py-2.5 text-sm font-semibold text-navy hover:bg-water-pale hover:text-blue-accent transition-colors"
+                          >
+                            {child.name}
+                          </a>
+                        ) : (
+                          <Link
+                            key={child.name}
+                            href={child.href}
+                            className="block px-4 py-2.5 text-sm font-semibold text-navy hover:bg-water-pale hover:text-blue-accent transition-colors"
+                          >
+                            {child.name}
+                          </Link>
+                        )
+                      )}
+                    </div>
+                  </div>
+                );
+              }
+
               return (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`px-2.5 py-3 text-[12px] font-medium tracking-wide transition-colors border-b-2 ${
+                  className={`px-5 py-3 text-[13px] font-semibold tracking-wide transition-colors border-b-2 ${
                     active
                       ? "text-water-blue border-water-blue"
                       : "text-white/90 border-transparent hover:text-water-blue hover:border-water-blue/50"
@@ -209,6 +304,25 @@ export default function Header() {
               </Link>
             );
           })}
+
+          <div className="pt-5 pb-2 border-b border-slate-100">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-sky-primary mb-3">
+              Downloads
+            </p>
+            <div className="space-y-2">
+              {downloadLinks.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  download={item.fileName}
+                  onClick={() => setMenuOpen(false)}
+                  className="block bg-water-pale px-4 py-3 text-sm font-bold text-navy hover:bg-sky-primary hover:text-white transition-colors"
+                >
+                  {item.name}
+                </a>
+              ))}
+            </div>
+          </div>
 
           <Link
             href="/admissions"
