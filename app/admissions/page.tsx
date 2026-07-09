@@ -9,9 +9,9 @@ import {
   Phone,
   Mail,
   MapPin,
-  MessageCircle,
 } from "lucide-react";
 
+import { ADMISSION_FORM_URL } from "@/app/admission-form";
 import PageHero from "@/app/components/PageHero";
 
 export const metadata: Metadata = {
@@ -328,13 +328,13 @@ export default function AdmissionsPage() {
           </p>
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             <a
-              href="https://wa.me/923335500780"
+              href={ADMISSION_FORM_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-sky-primary text-white font-semibold px-7 py-3.5 hover:bg-blue-accent transition-colors"
             >
-              <MessageCircle className="w-4 h-4" />
-              Apply via WhatsApp
+              <FileText className="w-4 h-4" />
+              Apply for Admission
             </a>
             <Link
               href="/contact"

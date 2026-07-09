@@ -2,6 +2,8 @@ import Link from "next/link";
 import { Calendar, Clock, ArrowLeft, CheckCircle, Star } from "lucide-react";
 import type { Metadata } from "next";
 
+import { ADMISSION_FORM_URL } from "@/app/admission-form";
+
 export const metadata: Metadata = {
   title:
     "Best School in Islamabad for Conceptual Learning | Chanab Centre of Excellence",
@@ -136,12 +138,14 @@ export default function BestSchoolArticle() {
               difference conceptual learning makes.
             </p>
             <div className="mt-4 flex flex-wrap gap-4">
-              <Link
-                href="/admissions"
+              <a
+                href={ADMISSION_FORM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-blue-accent text-white font-bold px-5 py-2.5 rounded-lg hover:bg-blue-primary transition-colors text-sm"
               >
                 Apply Now →
-              </Link>
+              </a>
               <Link
                 href="/academics"
                 className="inline-flex items-center gap-2 text-blue-accent font-semibold hover:text-blue-primary transition-colors text-sm"

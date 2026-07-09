@@ -18,6 +18,7 @@ import {
   TabletSmartphone,
 } from "lucide-react";
 
+import { ADMISSION_FORM_URL } from "@/app/admission-form";
 import PageHero from "@/app/components/PageHero";
 
 export const metadata: Metadata = {
@@ -462,13 +463,15 @@ export default function AcademicsPage() {
               </div>
             ))}
           </div>
-          <Link
-            href="/admissions"
+          <a
+            href={ADMISSION_FORM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-sky-primary text-white font-semibold px-7 py-3.5 hover:bg-blue-accent transition-colors"
           >
             Excellence Begins Here — Apply Now
             <ArrowRight className="w-4 h-4" />
-          </Link>
+          </a>
         </div>
       </section>
     </>

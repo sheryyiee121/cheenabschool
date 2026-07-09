@@ -12,6 +12,7 @@ import {
   Sparkles,
 } from "lucide-react";
 
+import { ADMISSION_FORM_URL } from "@/app/admission-form";
 import PageHero from "@/app/components/PageHero";
 
 export const metadata: Metadata = {
@@ -140,12 +141,14 @@ export default function FacilitiesPage() {
               Book a Campus Visit
               <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link
-              href="/admissions"
+            <a
+              href={ADMISSION_FORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 border-2 border-white/60 text-white font-semibold px-7 py-3 hover:bg-white hover:text-navy transition-colors"
             >
               Apply Now
-            </Link>
+            </a>
           </div>
         </div>
       </section>

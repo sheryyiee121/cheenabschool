@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
+import { ADMISSION_FORM_URL } from "@/app/admission-form";
 import PageHero from "@/app/components/PageHero";
 
 export const metadata: Metadata = {
@@ -159,12 +160,14 @@ export default function FounderMessagePage() {
                   Schedule a Campus Visit
                   <ArrowRight className="w-4 h-4" />
                 </Link>
-                <Link
-                  href="/admissions"
+                <a
+                  href={ADMISSION_FORM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 border-2 border-navy text-navy font-semibold px-6 py-2.5 hover:bg-navy hover:text-white transition-colors"
                 >
                   Apply for Admission
-                </Link>
+                </a>
               </div>
             </div>
           </div>

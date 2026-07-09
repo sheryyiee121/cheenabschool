@@ -6,6 +6,8 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ChevronDown, X, Phone, Mail, MapPin } from "lucide-react";
 
+import { ADMISSION_FORM_URL } from "@/app/admission-form";
+
 const navigation = [
   { name: "Home", href: "/" },
   { name: "About CCoE", href: "/about" },
@@ -103,12 +105,14 @@ export default function Header() {
               <Phone className="w-3 h-3" />
               051-2154510
             </a>
-            <Link
-              href="/admissions"
+            <a
+              href={ADMISSION_FORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-semibold hover:text-water-blue transition-colors"
             >
               Apply
-            </Link>
+            </a>
             <span className="text-white/30">|</span>
             <Link
               href="/contact"
@@ -143,12 +147,14 @@ export default function Header() {
             </Link>
 
             <div className="flex items-center gap-3 sm:gap-5">
-              <Link
-                href="/admissions"
+              <a
+                href={ADMISSION_FORM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hidden sm:inline-flex bg-sky-primary text-white font-semibold text-sm px-5 py-2.5 hover:bg-blue-accent transition-colors"
               >
                 Apply Now
-              </Link>
+              </a>
 
               {/* Hamburger (all screen sizes) */}
               <button
@@ -324,13 +330,15 @@ export default function Header() {
             </div>
           </div>
 
-          <Link
-            href="/admissions"
+          <a
+            href={ADMISSION_FORM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setMenuOpen(false)}
             className="block text-center bg-sky-primary text-white font-semibold px-5 py-3.5 mt-6 mb-4 hover:bg-blue-accent transition-colors"
           >
             Apply Now — Session 2026–2027
-          </Link>
+          </a>
         </nav>
 
         {/* Drawer footer */}

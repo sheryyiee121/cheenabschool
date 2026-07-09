@@ -15,6 +15,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 
+import { ADMISSION_FORM_URL } from "@/app/admission-form";
 import PageHero from "@/app/components/PageHero";
 
 export const metadata: Metadata = {
@@ -215,13 +216,15 @@ export default function WhyCCoEPage() {
             is inspired, character is nurtured, and faith is strengthened.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/admissions"
+            <a
+              href={ADMISSION_FORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-sky-primary text-white font-semibold px-7 py-3.5 hover:bg-blue-accent transition-colors"
             >
               Apply Now
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </a>
             <Link
               href="/contact"
               className="inline-flex items-center gap-2 border-2 border-white/60 text-white font-semibold px-7 py-3 hover:bg-white hover:text-navy transition-colors"

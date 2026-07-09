@@ -12,6 +12,7 @@ import {
   Globe,
 } from "lucide-react";
 
+import { ADMISSION_FORM_URL } from "@/app/admission-form";
 import PageHero from "@/app/components/PageHero";
 
 export const metadata: Metadata = {
@@ -321,13 +322,15 @@ export default function StudentLifePage() {
           <p className="text-water-light font-semibold text-lg mb-10">
             That is the CCoE difference.
           </p>
-          <Link
-            href="/admissions"
+          <a
+            href={ADMISSION_FORM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-sky-primary text-white font-semibold px-7 py-3.5 hover:bg-blue-accent transition-colors"
           >
             Join the CCoE Family
             <ArrowRight className="w-4 h-4" />
-          </Link>
+          </a>
         </div>
       </section>
     </>

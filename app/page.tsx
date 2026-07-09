@@ -13,6 +13,7 @@ import {
   Backpack,
 } from "lucide-react";
 
+import { ADMISSION_FORM_URL } from "@/app/admission-form";
 import HeroBgSlider from "@/app/components/HeroBgSlider";
 
 const pillars = [
@@ -143,13 +144,15 @@ export default function HomePage() {
               Grades VI–XII | FBISE Curriculum
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link
-                href="/admissions"
+              <a
+                href={ADMISSION_FORM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-sky-primary text-white font-semibold px-7 py-3.5 hover:bg-blue-accent transition-colors"
               >
                 Apply Now
                 <ArrowRight className="w-4 h-4" />
-              </Link>
+              </a>
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 border-2 border-white/70 text-white font-semibold px-7 py-3 hover:bg-white hover:text-navy transition-colors"
@@ -427,13 +430,15 @@ export default function HomePage() {
             Admissions Open | Session 2026–2027
           </p>
           <div className="flex flex-wrap justify-center gap-4 mb-12">
-            <Link
-              href="/admissions"
+            <a
+              href={ADMISSION_FORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-sky-primary text-white font-semibold px-7 py-3.5 hover:bg-blue-accent transition-colors"
             >
               Apply Now
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </a>
             <Link
               href="/contact"
               className="inline-flex items-center gap-2 border-2 border-white/60 text-white font-semibold px-7 py-3 hover:bg-white hover:text-navy transition-colors"

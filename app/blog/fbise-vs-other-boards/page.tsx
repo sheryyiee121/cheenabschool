@@ -2,6 +2,8 @@ import Link from "next/link";
 import { Calendar, Clock, ArrowLeft, CheckCircle } from "lucide-react";
 import type { Metadata } from "next";
 
+import { ADMISSION_FORM_URL } from "@/app/admission-form";
+
 export const metadata: Metadata = {
   title:
     "FBISE vs Other Education Boards: A Complete Comparison | Chanab Centre of Excellence",
@@ -169,12 +171,14 @@ export default function FBISEArticle() {
               FBISE gives your child universal recognition. Chanab gives your
               child real understanding. Together, it&apos;s a winning formula.
             </p>
-            <Link
-              href="/admissions"
+            <a
+              href={ADMISSION_FORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-4 inline-flex items-center gap-2 bg-blue-accent text-white font-bold px-5 py-2.5 rounded-lg hover:bg-blue-primary transition-colors text-sm"
             >
               Apply to Chanab →
-            </Link>
+            </a>
           </div>
         </div>
       </div>
