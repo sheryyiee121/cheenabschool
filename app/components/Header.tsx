@@ -18,6 +18,7 @@ const navigation = [
   { name: "Campus & Facilities", href: "/facilities" },
   { name: "Admissions", href: "/admissions" },
   { name: "News & Events", href: "/news" },
+  { name: "Gallery", href: "/gallery" },
   { name: "Contact Us", href: "/contact" },
 ];
 
@@ -63,7 +64,14 @@ const desktopNavigation = [
       ...downloadLinks,
     ],
   },
-  { name: "News & Events", href: "/news" },
+  {
+    name: "News",
+    href: "/news",
+    children: [
+      { name: "News & Events", href: "/news" },
+      { name: "Photo Gallery", href: "/gallery" },
+    ],
+  },
   { name: "Contact", href: "/contact" },
 ];
 

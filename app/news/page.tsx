@@ -180,13 +180,21 @@ export default function NewsPage() {
             achievement, and the many milestones that make every academic year
             memorable.
           </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 bg-sky-primary text-white font-semibold px-7 py-3.5 hover:bg-blue-accent transition-colors"
-          >
-            Contact Us
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              href="/gallery"
+              className="inline-flex items-center gap-2 bg-sky-primary text-white font-semibold px-7 py-3.5 hover:bg-blue-accent transition-colors"
+            >
+              View Photo Gallery
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 border-2 border-white/60 text-white font-semibold px-7 py-3 hover:bg-white hover:text-navy transition-colors"
+            >
+              Contact Us
+            </Link>
+          </div>
           <p className="mt-10 text-water-light font-medium italic">
             Every Achievement Begins with Opportunity. Every Success Has a
             Story.

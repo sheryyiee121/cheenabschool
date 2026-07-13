@@ -16,6 +16,7 @@ const learnLinks = [
   { name: "Admissions", href: "/admissions" },
   { name: "Education Without Burden", href: "/low-bag-system" },
   { name: "News & Events", href: "/news" },
+  { name: "Gallery", href: "/gallery" },
   { name: "Blog", href: "/blog" },
 ];
 
