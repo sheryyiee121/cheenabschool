@@ -286,3 +286,118 @@ export const galleryImages: GalleryImage[] = [
     category: "events",
   },
 ];
+
+export const fourPillarImages = {
+  knowledge: {
+    src: "/images/class.jpeg",
+    alt: "Students learning in a CCoE classroom",
+  },
+  character: {
+    src: gallerySrc("gallery", "WhatsApp Image 2026-07-10 at 10.56.44 AM.jpeg"),
+    alt: "Award ceremony celebrating student character and achievement",
+  },
+  faith: {
+    src: gallerySrc(
+      "gallery",
+      "WhatsApp Image 2026-07-09 at 11.03.17 AM (1).jpeg"
+    ),
+    alt: "Cultural and faith-centred celebration at CCoE",
+  },
+  leadership: {
+    src: gallerySrc("gallery", "WhatsApp Image 2026-07-09 at 10.40.40 AM.jpeg"),
+    alt: "Student public speaking and leadership at CCoE",
+  },
+} as const;
+
+export type HeroSlide = {
+  src: string;
+  alt: string;
+};
+
+/** Landscape photos only — used on the home page hero background slider. */
+export const heroLandscapeSlides: HeroSlide[] = [
+  {
+    src: "/images/hero-bg.jpeg",
+    alt: "CHANAB Centre of Excellence campus — admissions open",
+  },
+  {
+    src: "/images/class.jpeg",
+    alt: "Students and faculty at CHANAB Centre of Excellence",
+  },
+  {
+    src: gallerySrc("gallery", "WhatsApp Image 2026-07-09 at 10.59.00 AM.jpeg"),
+    alt: "Ribbon-cutting ceremony at CCoE campus",
+  },
+  {
+    src: gallerySrc("gallery", "WhatsApp Image 2026-07-09 at 10.59.08 AM.jpeg"),
+    alt: "Annual Sports Week at CHANAB Centre of Excellence",
+  },
+  {
+    src: gallerySrc("gallery", "WhatsApp Image 2026-07-09 at 11.03.17 AM.jpeg"),
+    alt: "Guest visit on the CCoE campus",
+  },
+  {
+    src: gallerySrc("gallery", "WhatsApp Image 2026-07-09 at 10.59.23 AM.jpeg"),
+    alt: "Leadership and faculty at CHANAB Centre of Excellence",
+  },
+  {
+    src: gallerySrc("gallery", "WhatsApp Image 2026-07-09 at 10.59.28 AM.jpeg"),
+    alt: "Mentorship and student engagement at CCoE",
+  },
+  {
+    src: gallerySrc("gallery", "WhatsApp Image 2026-07-09 at 10.59.29 AM.jpeg"),
+    alt: "Institutional meeting at CHANAB Centre of Excellence",
+  },
+];
+
+export const homeGalleryPreview: GalleryImage[] = [
+  {
+    src: "/images/campus-features.jpeg",
+    alt: "CHANAB Centre of Excellence campus",
+    category: "campus",
+  },
+  {
+    src: "/images/class.jpeg",
+    alt: "Students learning in a CCoE classroom",
+    category: "classrooms",
+  },
+  {
+    src: gallerySrc(
+      "images/gallery",
+      "WhatsApp Image 2026-07-06 at 12.02.11 PM.jpeg"
+    ),
+    alt: "Science laboratory at CCoE",
+    category: "laboratories",
+  },
+  {
+    src: gallerySrc(
+      "images/gallery",
+      "WhatsApp Image 2026-07-06 at 11.59.29 AM (1).jpeg"
+    ),
+    alt: "CCoE library and reading resources",
+    category: "library",
+  },
+  {
+    src: gallerySrc(
+      "images/gallery",
+      "WhatsApp Image 2026-07-07 at 9.28.03 AM.jpeg"
+    ),
+    alt: "Sports and physical development at CCoE",
+    category: "sports",
+  },
+  {
+    src: gallerySrc("gallery", "WhatsApp Image 2026-07-09 at 10.40.40 AM.jpeg"),
+    alt: "Student public speaking at CCoE",
+    category: "activities",
+  },
+  {
+    src: gallerySrc("gallery", "WhatsApp Image 2026-07-10 at 10.56.44 AM.jpeg"),
+    alt: "Award ceremony at CHANAB Centre of Excellence",
+    category: "events",
+  },
+  {
+    src: gallerySrc("gallery", "WhatsApp Image 2026-07-09 at 10.59.00 AM.jpeg"),
+    alt: "Ribbon-cutting ceremony at campus event",
+    category: "events",
+  },
+];

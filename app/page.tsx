@@ -14,25 +14,33 @@ import {
 } from "lucide-react";
 
 import { ADMISSION_FORM_URL } from "@/app/admission-form";
+import {
+  fourPillarImages,
+  homeGalleryPreview,
+} from "@/app/gallery-data";
 import HeroBgSlider from "@/app/components/HeroBgSlider";
 
 const pillars = [
   {
+    key: "knowledge" as const,
     icon: BookOpen,
     title: "Knowledge",
     description: "Developing curiosity, understanding, and academic excellence.",
   },
   {
+    key: "character" as const,
     icon: Heart,
     title: "Character",
     description: "Building honesty, responsibility, discipline, and respect.",
   },
   {
+    key: "faith" as const,
     icon: Landmark,
     title: "Faith",
     description: "Strengthening Islamic values and good moral character.",
   },
   {
+    key: "leadership" as const,
     icon: Users,
     title: "Leadership",
     description:
@@ -278,20 +286,96 @@ export default function HomePage() {
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {pillars.map((pillar) => (
-              <div
-                key={pillar.title}
-                className="bg-white/5 border border-white/10 rounded-xl p-7 text-center card-hover"
-              >
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-sky-primary/20 mb-5">
-                  <pillar.icon className="w-7 h-7 text-water-blue" />
+            {pillars.map((pillar) => {
+              const image = fourPillarImages[pillar.key];
+
+              return (
+                <div
+                  key={pillar.title}
+                  className="group overflow-hidden rounded-xl border border-white/10 bg-white/5 card-hover"
+                >
+                  <div className="relative h-48 sm:h-52 overflow-hidden">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/30 to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4 flex items-center gap-3">
+                      <div className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-sky-primary/90 shrink-0">
+                        <pillar.icon className="w-5 h-5 text-white" />
+                      </div>
+                      <h3 className="text-lg font-bold text-white drop-shadow">
+                        {pillar.title}
+                      </h3>
+                    </div>
+                  </div>
+                  <p className="p-5 text-white/75 text-sm leading-relaxed text-center">
+                    {pillar.description}
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold mb-2">{pillar.title}</h3>
-                <p className="text-white/70 text-sm leading-relaxed">
-                  {pillar.description}
-                </p>
-              </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== CAMPUS GALLERY PREVIEW ===== */}
+      <section className="py-16 sm:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold text-navy mb-3">
+              Life at CCoE
+            </h2>
+            <p className="text-slate-500 max-w-2xl mx-auto">
+              A glimpse into our campus, classrooms, activities, and the moments
+              that make CHANAB Centre of Excellence a vibrant learning
+              community.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+            {homeGalleryPreview.map((photo, index) => (
+              <Link
+                key={photo.src}
+                href="/gallery"
+                className={`group relative overflow-hidden bg-slate-100 ${
+                  index === 0
+                    ? "col-span-2 row-span-2 aspect-square md:aspect-auto md:min-h-[320px]"
+                    : "aspect-square"
+                }`}
+              >
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes={
+                    index === 0
+                      ? "(max-width: 768px) 100vw, 50vw"
+                      : "(max-width: 768px) 50vw, 25vw"
+                  }
+                />
+                <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/40 transition-colors duration-300" />
+                <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-gradient-to-t from-navy/90 to-transparent">
+                  <p className="text-white text-xs sm:text-sm font-medium line-clamp-2">
+                    {photo.alt}
+                  </p>
+                </div>
+              </Link>
             ))}
+          </div>
+
+          <div className="text-center mt-10">
+            <Link
+              href="/gallery"
+              className="inline-flex items-center gap-2 bg-sky-primary text-white font-semibold px-7 py-3.5 hover:bg-blue-accent transition-colors"
+            >
+              View Full Gallery
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>

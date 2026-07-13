@@ -4,26 +4,12 @@ import { useRef, useEffect } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 
-type Slide = {
-  src: string;
-  alt: string;
-};
-
-const defaultSlides: Slide[] = [
-  {
-    src: "/images/class.jpeg",
-    alt: "Students at CHANAB Centre of Excellence",
-  },
-  {
-    src: "/images/president.jpeg",
-    alt: "Prof. Muhammad Aftab Tariq, Founder & Chairman of CHANAB Centre of Excellence",
-  },
-];
+import { heroLandscapeSlides, type HeroSlide } from "@/app/gallery-data";
 
 export default function HeroBgSlider({
-  slides = defaultSlides,
+  slides = heroLandscapeSlides,
 }: {
-  slides?: Slide[];
+  slides?: HeroSlide[];
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -87,19 +73,19 @@ export default function HeroBgSlider({
       window.clearInterval(intervalId);
       gsap.killTweensOf(slideEls);
     };
-  }, []);
+  }, [slides.length]);
 
   return (
     <div ref={containerRef} className="absolute inset-0">
-      {slides.map((slide) => (
+      {slides.map((slide, index) => (
         <div key={slide.src} className="hero-bg-slide absolute inset-0">
           <Image
             src={slide.src}
             alt={slide.alt}
             fill
-            className="object-cover"
+            className="object-cover object-center"
             sizes="100vw"
-            priority
+            priority={index === 0}
           />
         </div>
       ))}
