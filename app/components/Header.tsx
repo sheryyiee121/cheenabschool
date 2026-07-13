@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { ChevronDown, X, Phone, Mail, MapPin } from "lucide-react";
 
 import { ADMISSION_FORM_URL } from "@/app/admission-form";
+import { LOGO_ALT, LOGO_SRC } from "@/app/logo";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -138,11 +139,11 @@ export default function Header() {
           <div className="flex items-center justify-between h-16 sm:h-[72px]">
             <Link href="/" className="flex items-center gap-3 shrink-0">
               <Image
-                src="/images/logo.jpeg"
-                alt="CHANAB Centre of Excellence"
+                src={LOGO_SRC}
+                alt={LOGO_ALT}
                 width={52}
                 height={52}
-                className="rounded-md size-11 sm:size-12"
+                className="rounded-full size-11 sm:size-12"
               />
               <div>
                 <p className="font-bold text-navy text-base sm:text-lg leading-tight tracking-tight">
@@ -274,11 +275,11 @@ export default function Header() {
         <div className="flex items-center justify-between px-6 py-5 border-b border-slate-100">
           <div className="flex items-center gap-2.5">
             <Image
-              src="/images/logo.jpeg"
-              alt="CHANAB Centre of Excellence"
+              src={LOGO_SRC}
+              alt={LOGO_ALT}
               width={40}
               height={40}
-              className="rounded-md size-10"
+              className="rounded-full size-10"
             />
             <p className="font-bold text-navy text-sm leading-tight">
               CHANAB

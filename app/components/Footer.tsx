@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
+import { LOGO_ALT, LOGO_SRC } from "@/app/logo";
+
 const exploreLinks = [
   { name: "Home", href: "/" },
   { name: "About CCoE", href: "/about" },
@@ -29,11 +31,11 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-3 mb-4">
               <Image
-                src="/images/logo.jpeg"
-                alt="CHANAB Centre of Excellence"
+                src={LOGO_SRC}
+                alt={LOGO_ALT}
                 width={56}
                 height={56}
-                className="rounded-lg size-14"
+                className="rounded-full size-14"
               />
               <div>
                 <p className="font-bold text-lg leading-tight text-navy">

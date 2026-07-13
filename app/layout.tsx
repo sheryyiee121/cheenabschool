@@ -5,6 +5,7 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import WhatsAppButton from "@/app/components/WhatsAppButton";
 import SmoothScroll from "@/app/components/SmoothScroll";
+import { LOGO_SRC } from "@/app/logo";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -27,9 +28,9 @@ export const metadata: Metadata = {
     "low bag weight",
   ],
   icons: {
-    icon: "/images/logo.jpeg",
-    shortcut: "/images/logo.jpeg",
-    apple: "/images/logo.jpeg",
+    icon: LOGO_SRC,
+    shortcut: LOGO_SRC,
+    apple: LOGO_SRC,
   },
 };
 
