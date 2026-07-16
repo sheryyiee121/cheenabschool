@@ -6,9 +6,9 @@ import { ADMISSION_FORM_URL } from "@/app/admission-form";
 
 export const metadata: Metadata = {
   title:
-    "Best School in Islamabad for Conceptual Learning | Chanab Centre of Excellence",
+    "Best Institution in Islamabad for Conceptual Learning | Chanab Centre of Excellence",
   description:
-    "What makes a school the best in Islamabad? Conceptual learning, student health, and proven results. Discover Chanab Centre of Excellence.",
+    "What makes an institution the best in Islamabad? Conceptual learning, student health, and proven results. Discover Chanab Centre of Excellence.",
 };
 
 export default function BestSchoolArticle() {
@@ -37,15 +37,16 @@ export default function BestSchoolArticle() {
         </div>
 
         <h1 className="text-3xl sm:text-4xl font-extrabold text-navy leading-tight">
-          Best School in Islamabad for Conceptual Learning
+          Best Institution in Islamabad for Conceptual Learning
         </h1>
 
         <div className="mt-10 prose prose-lg max-w-none">
           <p className="text-gray-600 leading-relaxed text-lg">
-            Islamabad has no shortage of schools. From large chains to small
-            academies, parents face an overwhelming choice. But the question
-            isn&apos;t just &quot;which school has the best results?&quot; — it&apos;s
-            &quot;which school produces the best <em>thinkers</em>?&quot;
+            Islamabad has no shortage of educational institutions. From large
+            chains to small academies, parents face an overwhelming choice. But
+            the question isn&apos;t just &quot;which institution has the best
+            results?&quot; — it&apos;s &quot;which institution produces the best{" "}
+            <em>thinkers</em>?&quot;
           </p>
 
           <h2 className="text-2xl font-bold text-navy mt-10 mb-4">

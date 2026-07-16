@@ -22,9 +22,9 @@ const blogs = [
   },
   {
     slug: "best-school-islamabad",
-    title: "Best School in Islamabad for Conceptual Learning",
+    title: "Best Institution in Islamabad for Conceptual Learning",
     excerpt:
-      "What makes a school truly great? It's not just results — it's how students learn. Discover why conceptual learning at Chanab Centre of Excellence produces better thinkers and higher achievers.",
+      "What makes an institution truly great? It's not just results — it's how students learn. Discover why conceptual learning at Chanab Centre of Excellence produces better thinkers and higher achievers.",
     date: "February 28, 2026",
     readTime: "6 min read",
     category: "Education",

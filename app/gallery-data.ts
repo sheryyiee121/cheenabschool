@@ -17,15 +17,15 @@ export const galleryCategories: {
   id: GalleryCategory | "all";
   label: string;
 }[] = [
-  { id: "all", label: "All Photos" },
-  { id: "campus", label: "Campus" },
-  { id: "classrooms", label: "Classrooms" },
-  { id: "laboratories", label: "Laboratories" },
-  { id: "library", label: "Library" },
-  { id: "sports", label: "Sports Facilities" },
-  { id: "activities", label: "Student Activities" },
-  { id: "events", label: "Events" },
-];
+    { id: "all", label: "All Photos" },
+    { id: "campus", label: "Campus" },
+    { id: "classrooms", label: "Classrooms" },
+    { id: "laboratories", label: "Laboratories" },
+    { id: "library", label: "Library" },
+    { id: "sports", label: "Sports Facilities" },
+    { id: "activities", label: "Student Activities" },
+    { id: "events", label: "Events" },
+  ];
 
 /** Encode filenames with spaces for use in URLs. */
 export function gallerySrc(folder: string, filename: string): string {
@@ -37,11 +37,6 @@ export const galleryImages: GalleryImage[] = [
   {
     src: "/images/campus-features.jpeg",
     alt: "CHANAB Centre of Excellence campus",
-    category: "campus",
-  },
-  {
-    src: "/images/campus-features-2.jpeg",
-    alt: "CCoE campus facilities",
     category: "campus",
   },
   {
@@ -62,11 +57,6 @@ export const galleryImages: GalleryImage[] = [
   {
     src: "/images/class.jpeg",
     alt: "Students learning in a CCoE classroom",
-    category: "classrooms",
-  },
-  {
-    src: gallerySrc("images/gallery", "class.jpeg"),
-    alt: "Classroom activity at CHANAB Centre of Excellence",
     category: "classrooms",
   },
   {
@@ -172,14 +162,6 @@ export const galleryImages: GalleryImage[] = [
   },
   {
     src: gallerySrc(
-      "gallery",
-      "WhatsApp Image 2026-07-09 at 10.40.40 AM (1).jpeg"
-    ),
-    alt: "Championing excellence — student leadership",
-    category: "activities",
-  },
-  {
-    src: gallerySrc(
       "images/gallery",
       "WhatsApp Image 2026-07-07 at 9.28.02 AM (1).jpeg"
     ),
@@ -254,14 +236,6 @@ export const galleryImages: GalleryImage[] = [
   {
     src: gallerySrc("gallery", "WhatsApp Image 2026-07-10 at 10.57.52 AM.jpeg"),
     alt: "Formal gathering at CCoE event",
-    category: "events",
-  },
-  {
-    src: gallerySrc(
-      "gallery",
-      "WhatsApp Image 2026-07-10 at 10.57.52 AM (1).jpeg"
-    ),
-    alt: "School event with faculty and guests",
     category: "events",
   },
   {

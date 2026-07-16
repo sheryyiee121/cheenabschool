@@ -16,20 +16,20 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.ccoe.edu.pk"),
-  title: "Chanab Centre of Excellence | Best School in Islamabad",
+  title: "Chanab Centre of Excellence | Best Institution in Islamabad",
   description:
-    "Chanab Centre of Excellence — Premier school in G-12 Islamabad offering conceptual learning, low bag weight system, and excellence in academics for grades 6–12.",
+    "Chanab Centre of Excellence — Premier institution in G-12 Islamabad offering conceptual learning, low bag weight system, and excellence in academics for grades 6–12.",
   keywords: [
-    "best school in Islamabad",
+    "best institution in Islamabad",
     "Chanab Centre of Excellence",
-    "school G-12 Islamabad",
+    "institution G-12 Islamabad",
     "conceptual learning",
     "FBISE school",
     "low bag weight",
   ],
   icons: {
-    icon: LOGO_SRC,
-    shortcut: LOGO_SRC,
+    icon: [{ url: "/favicon.ico" }, { url: LOGO_SRC, type: "image/png" }],
+    shortcut: "/favicon.ico",
     apple: LOGO_SRC,
   },
 };
