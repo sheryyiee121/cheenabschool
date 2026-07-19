@@ -1,6 +1,6 @@
 "use client";
 
-import { X } from "lucide-react";
+import { X, Download } from "lucide-react";
 
 interface PDFModalProps {
     isOpen: boolean;
@@ -18,13 +18,23 @@ export default function PDFModal({ isOpen, onClose, pdfUrl, title }: PDFModalPro
                 {/* Header */}
                 <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100 bg-slate-50 shrink-0">
                     <h3 className="font-bold text-navy text-lg">{title}</h3>
-                    <button
-                        onClick={onClose}
-                        aria-label="Close modal"
-                        className="p-1.5 text-slate-500 hover:text-sky-primary bg-white rounded-md border border-slate-200 hover:border-sky-primary transition-colors focus:outline-none focus:ring-2 focus:ring-sky-primary/30"
-                    >
-                        <X className="w-5 h-5" />
-                    </button>
+                    <div className="flex items-center gap-3">
+                        <a
+                            href={pdfUrl}
+                            download
+                            className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-white bg-sky-primary hover:bg-blue-accent rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-sky-primary/30"
+                        >
+                            <Download className="w-4 h-4" />
+                            Download
+                        </a>
+                        <button
+                            onClick={onClose}
+                            aria-label="Close modal"
+                            className="p-2 text-slate-500 hover:text-sky-primary bg-white rounded-md border border-slate-200 hover:border-sky-primary transition-colors focus:outline-none focus:ring-2 focus:ring-sky-primary/30"
+                        >
+                            <X className="w-5 h-5" />
+                        </button>
+                    </div>
                 </div>
                 {/* Content */}
                 <div className="flex-1 w-full bg-slate-200 relative">
