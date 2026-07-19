@@ -8,6 +8,7 @@ import { ChevronDown, X, Phone, Mail, MapPin } from "lucide-react";
 
 import { ADMISSION_FORM_URL } from "@/app/admission-form";
 import { LOGO_ALT, LOGO_SRC } from "@/app/logo";
+import PDFModal from "./PDFModal";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -78,15 +79,16 @@ const desktopNavigation = [
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [pdfModal, setPdfModal] = useState({ isOpen: false, url: "", title: "" });
   const pathname = usePathname();
 
   // Lock page scroll while the drawer is open
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
+    document.body.style.overflow = (menuOpen || pdfModal.isOpen) ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
-  }, [menuOpen]);
+  }, [menuOpen, pdfModal.isOpen]);
 
   // Close the drawer on navigation
   useEffect(() => {
@@ -190,24 +192,23 @@ export default function Header() {
                 item.href === "/"
                   ? pathname === "/"
                   : pathname.startsWith(item.href) ||
-                    Boolean(
-                      children?.some((child) =>
-                        child.href.startsWith("/downloads")
-                          ? false
-                          : pathname.startsWith(child.href)
-                      )
-                    );
+                  Boolean(
+                    children?.some((child) =>
+                      child.href.startsWith("/downloads")
+                        ? false
+                        : pathname.startsWith(child.href)
+                    )
+                  );
 
               if (children) {
                 return (
                   <div key={item.name} className="group relative">
                     <Link
                       href={item.href}
-                      className={`flex items-center gap-1 px-5 py-3 text-[13px] font-semibold tracking-wide transition-colors border-b-2 ${
-                        active
+                      className={`flex items-center gap-1 px-5 py-3 text-[13px] font-semibold tracking-wide transition-colors border-b-2 ${active
                           ? "text-water-blue border-water-blue"
                           : "text-white/90 border-transparent hover:text-water-blue hover:border-water-blue/50"
-                      }`}
+                        }`}
                     >
                       {item.name}
                       <ChevronDown className="w-3.5 h-3.5 transition-transform group-hover:rotate-180" />
@@ -215,14 +216,13 @@ export default function Header() {
                     <div className="invisible absolute left-1/2 top-full z-50 w-64 -translate-x-1/2 translate-y-2 bg-white py-2 shadow-xl opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
                       {children.map((child) =>
                         "fileName" in child ? (
-                          <a
+                          <button
                             key={child.name}
-                            href={child.href}
-                            download={child.fileName}
-                            className="block px-4 py-2.5 text-sm font-semibold text-navy hover:bg-water-pale hover:text-blue-accent transition-colors"
+                            onClick={() => setPdfModal({ isOpen: true, url: child.href, title: child.name })}
+                            className="block w-full text-left px-4 py-2.5 text-sm font-semibold text-navy hover:bg-water-pale hover:text-blue-accent transition-colors"
                           >
                             {child.name}
-                          </a>
+                          </button>
                         ) : (
                           <Link
                             key={child.name}
@@ -242,11 +242,10 @@ export default function Header() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`px-5 py-3 text-[13px] font-semibold tracking-wide transition-colors border-b-2 ${
-                    active
+                  className={`px-5 py-3 text-[13px] font-semibold tracking-wide transition-colors border-b-2 ${active
                       ? "text-water-blue border-water-blue"
                       : "text-white/90 border-transparent hover:text-water-blue hover:border-water-blue/50"
-                  }`}
+                    }`}
                 >
                   {item.name}
                 </Link>
@@ -259,16 +258,14 @@ export default function Header() {
       {/* Overlay */}
       <div
         onClick={() => setMenuOpen(false)}
-        className={`fixed inset-0 bg-navy/60 backdrop-blur-[2px] transition-opacity duration-300 ${
-          menuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
+        className={`fixed inset-0 bg-navy/60 backdrop-blur-[2px] transition-opacity duration-300 ${menuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
       />
 
       {/* Drawer (phone + desktop) */}
       <aside
-        className={`fixed top-0 right-0 h-dvh w-full sm:w-[420px] bg-white shadow-2xl flex flex-col transition-transform duration-300 ease-in-out ${
-          menuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`fixed top-0 right-0 h-dvh w-full sm:w-[420px] bg-white shadow-2xl flex flex-col transition-transform duration-300 ease-in-out ${menuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
         aria-hidden={!menuOpen}
       >
         {/* Drawer header */}
@@ -309,11 +306,10 @@ export default function Header() {
                 key={item.name}
                 href={item.href}
                 onClick={() => setMenuOpen(false)}
-                className={`flex items-center justify-between py-4 border-b border-slate-100 font-semibold transition-colors ${
-                  active
+                className={`flex items-center justify-between py-4 border-b border-slate-100 font-semibold transition-colors ${active
                     ? "text-sky-primary"
                     : "text-navy hover:text-sky-primary"
-                }`}
+                  }`}
               >
                 {item.name}
               </Link>
@@ -326,15 +322,16 @@ export default function Header() {
             </p>
             <div className="space-y-2">
               {downloadLinks.map((item) => (
-                <a
+                <button
                   key={item.name}
-                  href={item.href}
-                  download={item.fileName}
-                  onClick={() => setMenuOpen(false)}
-                  className="block bg-water-pale px-4 py-3 text-sm font-bold text-navy hover:bg-sky-primary hover:text-white transition-colors"
+                  onClick={() => {
+                    setMenuOpen(false);
+                    setPdfModal({ isOpen: true, url: item.href, title: item.name });
+                  }}
+                  className="block w-full text-left bg-water-pale px-4 py-3 text-sm font-bold text-navy hover:bg-sky-primary hover:text-white transition-colors"
                 >
                   {item.name}
-                </a>
+                </button>
               ))}
             </div>
           </div>
@@ -372,6 +369,14 @@ export default function Header() {
           </p>
         </div>
       </aside>
+
+      {/* PDF Modal */}
+      <PDFModal
+        isOpen={pdfModal.isOpen}
+        onClose={() => setPdfModal({ ...pdfModal, isOpen: false })}
+        pdfUrl={pdfModal.url}
+        title={pdfModal.title}
+      />
     </header>
   );
 }
