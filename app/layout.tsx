@@ -28,8 +28,7 @@ export const metadata: Metadata = {
     "low bag weight",
   ],
   icons: {
-    icon: [{ url: "/favicon.ico" }, { url: LOGO_SRC, type: "image/png" }],
-    shortcut: "/favicon.ico",
+    icon: [{ url: LOGO_SRC, type: "image/png" }],
     apple: LOGO_SRC,
   },
 };
